@@ -12,29 +12,33 @@ function preload() {
 
 var Py = {};
 
-
 function create() {
-    Py.BSU = 80; //Basic Slot Unit
+//    Py.BSU = 80; //Basic Slot Unit
     
     Py.point = game.add.sprite(250, 250, 'red');
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
     Py.planets = new Array();
-    Py.planets[0] = new Phaser.Circle(250, 250, 200);
-    Py.planets[1] = new Phaser.Circle(600, 200, 120);
-    Py.planets[2] = new Phaser.Circle(1000, 300, 260);
+    Py.planets.push(new Planet(250, 250, 200));
+    Py.planets.push(new Planet(600, 200, 120));
+    Py.planets.push(new Planet(1000, 300, 260));
+//    Py.planets[0] = new Phaser.Circle(250, 250, 200);
+//    Py.planets[1] = new Phaser.Circle(600, 200, 120);
+//    Py.planets[2] = new Phaser.Circle(1000, 300, 260);
     game.stage.backgroundColor = 0x02B5F0;
     
     var i, j, point;
     for (j = 0; j < Py.planets.length; j++) {
         var planet = Py.planets[j];
-        var slots = Math.floor(planet.circumference() / Py.BSU);
+        var slots = Math.floor(planet.circle.circumference() / planet.bsu);
         for (i = 0; i < slots; i++) {
-            point = planet.circumferencePoint(360/slots * i, true);
-            var aux = game.add.sprite(point.x, point.y, 'mineral'); 
-            aux.anchor.setTo(0.5, 0.9);
-            aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+            if (Math.random() <= 0.6) {
+                point = planet.circle.circumferencePoint(360/slots * i, true);
+                var aux = game.add.sprite(point.x, point.y, planet.getResource(Math.random())); 
+                aux.anchor.setTo(0.5, 0.9);
+                aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+            }
         }
     }
     
@@ -59,7 +63,7 @@ function update() {
     if (Py.scooby.animations.currentAnim.name == 'walk') {
         Py.angulo += 0.3;
     }
-    aux = Py.planets[0].circumferencePoint(Py.angulo, true);
+    aux = Py.planets[0].circle.circumferencePoint(Py.angulo, true);
     Py.scooby.x = aux.x;
     Py.scooby.y = aux.y;
     Py.scooby.rotation = game.physics.arcade.angleBetween(Py.scooby, Py.planets[0]) - Math.PI/2;
@@ -78,11 +82,11 @@ function render() {
     var i, j, point;
     for (j = 0; j < Py.planets.length; j++) {
         var planet = Py.planets[j];
-        game.debug.geom(planet,'rgba(255,127,39,1)');
-        var slots = Math.floor(planet.circumference() / Py.BSU);
+        game.debug.geom(planet.circle,'rgba(255,127,39,1)');
+        var slots = Math.floor(planet.circle.circumference() / planet.bsu);
 //        for (i = 0; i < slots; i++) {
 //            console.log(i);
-//            point = planet.circumferencePoint(360/slots * i, true);
+//            point = planet.circle.circumferencePoint(360/slots * i, true);
 //            game.debug.pixel(point.x, point.y);
 //        }
         game.debug.pixel(planet.x, planet.y);
@@ -92,7 +96,7 @@ function render() {
 //    var point;
 //    for (i = 0; i < slots; i++) {
 //        console.log(i);
-//        point = Py.planets[0].circumferencePoint(360/slots * i, true);
+//        point = Py.planets[0].circle.circumferencePoint(360/slots * i, true);
 //        //game.add.sprite(point.x, point.y, 'red');
 //        game.debug.pixel(point.x, point.y);
 //    }
