@@ -2,7 +2,6 @@ var game = new Phaser.Game(1368, 656, Phaser.CANVAS, 'game', { preload: preload,
 
 function preload() {
     game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
-    game.load.image('red', 'assets/red.png');
     game.load.image('planet1', 'assets/planet1.png');
     game.load.image('mineral', 'assets/mineral.png');
     game.load.image('wood', 'assets/wood.png');
@@ -13,13 +12,15 @@ function preload() {
 var Py = {};
 
 function create() {
+    var i, j, point;
 //    Py.BSU = 80; //Basic Slot Unit
     
-    Py.point = game.add.sprite(250, 250, 'red');
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
+    
     Py.planets = new Array();
+    
     Py.planets.push(new Planet(250, 250, 200));
     Py.planets.push(new Planet(600, 200, 120));
     Py.planets.push(new Planet(1000, 300, 260));
@@ -28,7 +29,7 @@ function create() {
 //    Py.planets[2] = new Phaser.Circle(1000, 300, 260);
     game.stage.backgroundColor = 0x02B5F0;
     
-    var i, j, point;
+    
     for (j = 0; j < Py.planets.length; j++) {
         var planet = Py.planets[j];
         var slots = Math.floor(planet.circle.circumference() / planet.bsu);
@@ -69,11 +70,34 @@ function update() {
     Py.scooby.rotation = game.physics.arcade.angleBetween(Py.scooby, Py.planets[0]) - Math.PI/2;
     
 //    Py.scooby.x += 0.5;
-    if (Py.point.x < -Py.point.width) {
-        Py.point.x = game.world.width;
-    }
 }
 
+function createPlanets(number) {
+    var i, j, point, newRadius, tooClose, D, newX, newY, d;
+    Py.planetCount = number || 3;
+    D = 300;
+    for (i = 0; i< Py.planetCount; i++) {
+        newRadius = Math.floor(Math.random() * 200) + 100; //100 < newRadius < 300
+        do {
+            tooClose = false;
+            newX = game.world.centerX + Math.random() * D * Math.cos(game.rnd.angle());
+            newY = game.world.centerY + Math.random() * D * Math.sin(game.rnd.angle());
+            point = new Phaser.Point(newX, newY);
+            //check for distance with the previous planets 
+            for (j = 0 ; j < i ; j++) {
+                d = game.physics.arcade.distanceBetween(Py.planets[j], point) - Py.planets[j].radius - newRadius;
+                //distancebetween current planet and random position - rcurrent - rgenerated
+                if (d <= D/6) { //TODO the comparison parameter could be refined
+                    tooClose = true;
+                    break;
+                }
+            }
+        }
+        while(tooClose);
+        Py.planets.push(new Planet(newX, newY, newRadius));
+        D = 300 + (200 * i);
+    }
+}
 
 function render() {
 //    game.debug.geom(Py.planets[0],'rgba(34,177,76,1)');
