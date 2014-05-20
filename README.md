@@ -10,11 +10,11 @@ Features
 
 - Unit capabilities and interactions:
 
-----> Move over the surface of a planet\n
-----> Gather a resource\n
-----> Build structures and special items\n
-----> Fight with an opposing character\n
-----> Reproduce with a character of the opposite gender\n
+----> Move over the surface of a planet
+----> Gather a resource
+----> Build structures and special items
+----> Fight with an opposing character
+----> Reproduce with a character of the opposite gender
 
 - Basic artificial intelligence:
 
