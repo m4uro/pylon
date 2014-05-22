@@ -1,5 +1,5 @@
-Planet = function(x, y, radius, bsu) {
-    this.bsu = bsu || 80;
+Planet = function (x, y, radius, bsu) {
+    this.bsu = bsu || 60;
     this.resourceMap = {
         mineral: 0.5,
         wood: 0.5

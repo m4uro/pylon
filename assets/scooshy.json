@@ -1,0 +1,830 @@
+﻿{"frames": [
+
+{
+	"filename": "Scooby0000",
+	"frame": {"x":0,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0001",
+	"frame": {"x":56,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0002",
+	"frame": {"x":112,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0003",
+	"frame": {"x":168,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0004",
+	"frame": {"x":224,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0005",
+	"frame": {"x":280,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0006",
+	"frame": {"x":336,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0007",
+	"frame": {"x":392,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0008",
+	"frame": {"x":448,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0009",
+	"frame": {"x":504,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0010",
+	"frame": {"x":560,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0011",
+	"frame": {"x":616,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0012",
+	"frame": {"x":672,"y":0,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0013",
+	"frame": {"x":0,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0014",
+	"frame": {"x":56,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0015",
+	"frame": {"x":112,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0016",
+	"frame": {"x":168,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0017",
+	"frame": {"x":224,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0018",
+	"frame": {"x":280,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0019",
+	"frame": {"x":336,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0020",
+	"frame": {"x":392,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0021",
+	"frame": {"x":448,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0022",
+	"frame": {"x":504,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0023",
+	"frame": {"x":560,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0024",
+	"frame": {"x":616,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0025",
+	"frame": {"x":672,"y":54,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0026",
+	"frame": {"x":0,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0027",
+	"frame": {"x":56,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0028",
+	"frame": {"x":112,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0029",
+	"frame": {"x":168,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0030",
+	"frame": {"x":224,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0031",
+	"frame": {"x":280,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0032",
+	"frame": {"x":336,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0033",
+	"frame": {"x":392,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0034",
+	"frame": {"x":448,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0035",
+	"frame": {"x":504,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0036",
+	"frame": {"x":560,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0037",
+	"frame": {"x":616,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0038",
+	"frame": {"x":672,"y":108,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0039",
+	"frame": {"x":0,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0040",
+	"frame": {"x":56,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0041",
+	"frame": {"x":112,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0042",
+	"frame": {"x":168,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0043",
+	"frame": {"x":224,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0044",
+	"frame": {"x":280,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0045",
+	"frame": {"x":336,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0046",
+	"frame": {"x":392,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0047",
+	"frame": {"x":448,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0048",
+	"frame": {"x":504,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0049",
+	"frame": {"x":560,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0050",
+	"frame": {"x":616,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0051",
+	"frame": {"x":672,"y":162,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0052",
+	"frame": {"x":0,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0053",
+	"frame": {"x":56,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0054",
+	"frame": {"x":112,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0055",
+	"frame": {"x":168,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0056",
+	"frame": {"x":224,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0057",
+	"frame": {"x":280,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0058",
+	"frame": {"x":336,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0059",
+	"frame": {"x":392,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0060",
+	"frame": {"x":448,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0061",
+	"frame": {"x":504,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0062",
+	"frame": {"x":560,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0063",
+	"frame": {"x":616,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0064",
+	"frame": {"x":672,"y":216,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0065",
+	"frame": {"x":0,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0066",
+	"frame": {"x":56,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0067",
+	"frame": {"x":112,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0068",
+	"frame": {"x":168,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0069",
+	"frame": {"x":224,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0070",
+	"frame": {"x":280,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0071",
+	"frame": {"x":336,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0072",
+	"frame": {"x":392,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0073",
+	"frame": {"x":448,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0074",
+	"frame": {"x":504,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0075",
+	"frame": {"x":560,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0076",
+	"frame": {"x":616,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0077",
+	"frame": {"x":672,"y":270,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0078",
+	"frame": {"x":0,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0079",
+	"frame": {"x":56,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0080",
+	"frame": {"x":112,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0081",
+	"frame": {"x":168,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0082",
+	"frame": {"x":224,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0083",
+	"frame": {"x":280,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0084",
+	"frame": {"x":336,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0085",
+	"frame": {"x":392,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0086",
+	"frame": {"x":448,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0087",
+	"frame": {"x":504,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0088",
+	"frame": {"x":560,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0089",
+	"frame": {"x":616,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}
+,{
+	"filename": "Scooby0090",
+	"frame": {"x":672,"y":324,"w":56,"h":54},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":56,"h":54},
+	"sourceSize": {"w":56,"h":54},
+	"regPoint": {"x":24.1,"y":48.65}
+}],
+"meta": {
+	"app": "Adobe Flash CS6",
+	"version": "12.0.0.481",
+	"image": "scoobyF.png",
+	"format": "RGBA8888",
+	"size": {"w":731,"h":384},
+	"scale": "1"
+}
+}

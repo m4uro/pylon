@@ -2,6 +2,7 @@ var game = new Phaser.Game(1368, 656, Phaser.CANVAS, 'game', { preload: preload,
 
 function preload() {
     game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
+    game.load.atlas('scooshy', 'assets/scooshy.png', 'assets/scooshy.json');
     game.load.image('red', 'assets/red.png');
     game.load.image('planet1', 'assets/planet1.png');
     game.load.image('mineral', 'assets/mineral.png');
@@ -13,8 +14,13 @@ function preload() {
 var Py = {};
 
 function create() {
-    var i, j, point;
+    var i, j, point, planet, slots, aux;
 //    Py.BSU = 80; //Basic Slot Unit
+    
+    Py.attr = {
+        angularSpeed: 0.7,
+        extraction: 10
+    };
     
     Py.red = game.add.sprite(250, 250, 'red');
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
@@ -33,30 +39,37 @@ function create() {
     
     
     for (j = 0; j < Py.planets.length; j++) {
-        var planet = Py.planets[j];
-        var slots = Math.floor(planet.circle.circumference() / planet.bsu);
+        planet = Py.planets[j];
+        slots = Math.floor(planet.circle.circumference() / planet.bsu);
         for (i = 0; i < slots; i++) {
             if (Math.random() <= 0.6) {
                 point = planet.circle.circumferencePoint(360/slots * i, true);
-                var aux = game.add.sprite(point.x, point.y, planet.getResource(Math.random())); 
-                aux.anchor.setTo(0.5, 0.9);
-                aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+                //TEMP 50 as resource quantity
+                aux = new Resource(planet.getResource(Math.random()), 50, point.x, point.y, planet);
+                aux.sprite.anchor.setTo(0.5, 0.9);
+                aux.sprite.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
             }
         }
     }
     
     Py.scooby = game.add.sprite(100, 380, 'scooby');
     Py.scooby.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
-    Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 63, '', 4), 30, true, false);
+    Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
+    Py.scooby.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
     Py.scooby.anchor.setTo(0.5, 0.88);
     Py.scooby.scale.setTo(0.7, 0.7);
     
     Py.scooby.play('idle');
     Py.scooby.inputEnabled = true;
     Py.scooby.input.enableDrag(true);
-    
+    Py.scooby.planet = Py.planets[0];
+    Py.scooby.targetResource = null;
+    Py.scooby.busy = false;
     Py.scooby.angularSpeed = 0;
-    Py.angle = 0; //TODO replace
+    
+    Py.angle = 0; //TEMP
+    
+    Py.messageCount = 0;
     
     game.input.mouse.mouseDownCallback = mouseClick;
     
@@ -68,7 +81,27 @@ function update() {
     currentAngle = game.physics.arcade.angleBetween(Py.scooby, Py.planets[0]) + Math.PI;
     if ((currentAngle > Py.scooby.targetAngle - offset) && (currentAngle < Py.scooby.targetAngle + offset)) {
         Py.scooby.angularSpeed = 0;
-        Py.scooby.play('idle');
+        if (Py.scooby.targetResource) {
+            Py.scooby.play('gather');
+            //set timer and extract
+            if (!Py.scooby.busy) {
+                Py.scooby.busy = true;
+                //TEMP Py.timer
+                Py.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { 
+                    aux = Py.scooby.targetResource.extract(Py.attr.extraction);
+                    Py.message = 'Extracted ' + aux + ' ' + Py.scooby.targetResource.type + '!';
+                    Py.messageCount++;
+                    if (Py.scooby.targetResource.qty === 0) {
+                        Py.scooby.play('idle');
+                        Py.scooby.targetResource = null;
+                    }
+                    Py.scooby.busy = false;
+                }, this);
+            }
+        }
+        else {
+            Py.scooby.play('idle');
+        }
     }
     if (Py.scooby.animations.currentAnim.name == 'walk') {
         Py.angle += Py.scooby.angularSpeed;
@@ -130,18 +163,18 @@ function mouseClick(event) {
                 right = false;
         }
         if (right) {
-            Py.scooby.angularSpeed = 0.5;
+            Py.scooby.angularSpeed = Py.attr.angularSpeed;
             if (Py.scooby.scale.x < 0) Py.scooby.scale.x *= -1;
         }
         else {
-            Py.scooby.angularSpeed = -0.5;
+            Py.scooby.angularSpeed = -Py.attr.angularSpeed;
             if (Py.scooby.scale.x > 0) Py.scooby.scale.x *= -1;
         }
         Py.scooby.targetAngle = alpha;
-         Py.scooby.play('walk');
-//        var aux = Py.planets[0].circle.circumferencePoint(alpha, false);
-//        Py.red.x = aux.x;
-//        Py.red.y = aux.y;
+        Py.scooby.play('walk');
+        Py.scooby.busy = false;
+        Py.scooby.targetResource = null;
+        if (Py.timer) game.time.events.remove(Py.timer);
         
     }
 }
@@ -172,4 +205,5 @@ function render() {
 //        game.debug.pixel(point.x, point.y);
 //    }
 //    game.debug.pixel(Py.planets[0].x, Py.planets[0].y);
+    game.debug.text(Py.messageCount + ': ' +Py.message, 32, 32);
 }
