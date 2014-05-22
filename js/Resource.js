@@ -1,4 +1,4 @@
-Resource = function (type, qty, x, y, planet) {
+Pylon.Resource = function (type, qty, x, y, planet) {
     this.type = type;
     this.qty = qty;
     this.x = x;
@@ -11,7 +11,7 @@ Resource = function (type, qty, x, y, planet) {
     this.sprite.resource = this;
 };
 
-Resource.prototype = {
+Pylon.Resource.prototype = {
     extract: function (qty) {
         var aux;
         if (qty >= this.qty) {
@@ -28,7 +28,7 @@ Resource.prototype = {
     }
 };
 
-Resource.prototype.constructor = Resource;
+Pylon.Resource.prototype.constructor = Pylon.Resource;
 
 function clicked(sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
@@ -37,7 +37,7 @@ function clicked(sprite, pointer) {
         //if character planet is the same as the sprite planet
         if (Py.scooby.planet === sprite.planet) {
             //set character to extract this
-            Py.scooby.targetResource = sprite.resource;
+            Py.scooby.targetRes = sprite.resource;
         }
     }
 }

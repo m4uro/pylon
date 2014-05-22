@@ -29,9 +29,9 @@ function create() {
     
     Py.planets = new Array();
 //    createPlanets(3);
-    Py.planets.push(new Planet(250, 250, 200));
-    Py.planets.push(new Planet(600, 200, 120));
-    Py.planets.push(new Planet(1000, 300, 260));
+    Py.planets.push(new Pylon.Planet(250, 250, 200));
+    Py.planets.push(new Pylon.Planet(600, 200, 120));
+    Py.planets.push(new Pylon.Planet(1000, 300, 260));
 //    Py.planets[0] = new Phaser.Circle(250, 250, 200);
 //    Py.planets[1] = new Phaser.Circle(600, 200, 120);
 //    Py.planets[2] = new Phaser.Circle(1000, 300, 260);
@@ -45,27 +45,31 @@ function create() {
             if (Math.random() <= 0.6) {
                 point = planet.circle.circumferencePoint(360/slots * i, true);
                 //TEMP 50 as resource quantity
-                aux = new Resource(planet.getResource(Math.random()), 50, point.x, point.y, planet);
+                aux = new Pylon.Resource(planet.getResource(Math.random()), 50, point.x, point.y, planet);
                 aux.sprite.anchor.setTo(0.5, 0.9);
                 aux.sprite.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
             }
         }
     }
     
-    Py.scooby = game.add.sprite(100, 380, 'scooby');
+//    Py.scooby = game.add.sprite(100, 380, 'scooby');
+    Py.scooby = new Pylon.Character(game, 100, 380, 'scooby');
     Py.scooby.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
     Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
     Py.scooby.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
-    Py.scooby.anchor.setTo(0.5, 0.88);
-    Py.scooby.scale.setTo(0.7, 0.7);
+    Py.scooby.init();
+    game.add.existing(Py.scooby);
     
-    Py.scooby.play('idle');
-    Py.scooby.inputEnabled = true;
-    Py.scooby.input.enableDrag(true);
-    Py.scooby.planet = Py.planets[0];
-    Py.scooby.targetResource = null;
-    Py.scooby.busy = false;
-    Py.scooby.angularSpeed = 0;
+//    Py.scooby.inputEnabled = true;
+//    Py.scooby.input.enableDrag(true);
+    
+//    Py.scooby.anchor.setTo(0.5, 0.88);
+//    Py.scooby.scale.setTo(0.7, 0.7);
+//    Py.scooby.play('idle');
+//    Py.scooby.planet = Py.planets[0];
+//    Py.scooby.targetRes = null;
+//    Py.scooby.busy = false;
+//    Py.scooby.angularSpeed = 0;
     
     Py.angle = 0; //TEMP
     
@@ -81,19 +85,19 @@ function update() {
     currentAngle = game.physics.arcade.angleBetween(Py.scooby, Py.planets[0]) + Math.PI;
     if ((currentAngle > Py.scooby.targetAngle - offset) && (currentAngle < Py.scooby.targetAngle + offset)) {
         Py.scooby.angularSpeed = 0;
-        if (Py.scooby.targetResource) {
+        if (Py.scooby.targetRes) {
             Py.scooby.play('gather');
             //set timer and extract
             if (!Py.scooby.busy) {
                 Py.scooby.busy = true;
                 //TEMP Py.timer
                 Py.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { 
-                    aux = Py.scooby.targetResource.extract(Py.attr.extraction);
-                    Py.message = 'Extracted ' + aux + ' ' + Py.scooby.targetResource.type + '!';
+                    aux = Py.scooby.targetRes.extract(Py.attr.extraction);
+                    Py.message = 'Extracted ' + aux + ' ' + Py.scooby.targetRes.type + '!';
                     Py.messageCount++;
-                    if (Py.scooby.targetResource.qty === 0) {
+                    if (Py.scooby.targetRes.qty === 0) {
                         Py.scooby.play('idle');
-                        Py.scooby.targetResource = null;
+                        Py.scooby.targetRes = null;
                     }
                     Py.scooby.busy = false;
                 }, this);
@@ -136,7 +140,7 @@ function createPlanets(number) {
             }
         }
         while(tooClose);
-        Py.planets.push(new Planet(newX, newY, newRadius));
+        Py.planets.push(new Pylon.Planet(newX, newY, newRadius));
         D = 300 + (200 * i);
     }
 }
@@ -173,7 +177,7 @@ function mouseClick(event) {
         Py.scooby.targetAngle = alpha;
         Py.scooby.play('walk');
         Py.scooby.busy = false;
-        Py.scooby.targetResource = null;
+        Py.scooby.targetRes = null;
         if (Py.timer) game.time.events.remove(Py.timer);
         
     }

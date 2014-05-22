@@ -1,4 +1,4 @@
-Planet = function (x, y, radius, bsu) {
+Pylon.Planet = function (x, y, radius, bsu) {
     this.bsu = bsu || 60;
     this.resourceMap = {
         mineral: 0.5,
@@ -10,7 +10,7 @@ Planet = function (x, y, radius, bsu) {
     this.radius = radius;
 };
 
-Planet.prototype = {
+Pylon.Planet.prototype = {
     getResource: function (rnd) {
         var number = 0;
         for (res in this.resourceMap) {
@@ -22,4 +22,4 @@ Planet.prototype = {
     }
 };
 
-Planet.prototype.constructor = Planet;
+Pylon.Planet.prototype.constructor = Pylon.Planet;
