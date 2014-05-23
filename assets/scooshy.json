@@ -1,7 +1,7 @@
 ﻿{"frames": [
 
 {
-	"filename": "Scooby0000",
+	"filename": "Scooshy0000",
 	"frame": {"x":0,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -10,7 +10,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0001",
+	"filename": "Scooshy0001",
 	"frame": {"x":56,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -19,7 +19,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0002",
+	"filename": "Scooshy0002",
 	"frame": {"x":112,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -28,7 +28,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0003",
+	"filename": "Scooshy0003",
 	"frame": {"x":168,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -37,7 +37,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0004",
+	"filename": "Scooshy0004",
 	"frame": {"x":224,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -46,7 +46,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0005",
+	"filename": "Scooshy0005",
 	"frame": {"x":280,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -55,7 +55,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0006",
+	"filename": "Scooshy0006",
 	"frame": {"x":336,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -64,7 +64,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0007",
+	"filename": "Scooshy0007",
 	"frame": {"x":392,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -73,7 +73,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0008",
+	"filename": "Scooshy0008",
 	"frame": {"x":448,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -82,7 +82,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0009",
+	"filename": "Scooshy0009",
 	"frame": {"x":504,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -91,7 +91,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0010",
+	"filename": "Scooshy0010",
 	"frame": {"x":560,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -100,7 +100,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0011",
+	"filename": "Scooshy0011",
 	"frame": {"x":616,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -109,7 +109,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0012",
+	"filename": "Scooshy0012",
 	"frame": {"x":672,"y":0,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -118,7 +118,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0013",
+	"filename": "Scooshy0013",
 	"frame": {"x":0,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -127,7 +127,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0014",
+	"filename": "Scooshy0014",
 	"frame": {"x":56,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -136,7 +136,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0015",
+	"filename": "Scooshy0015",
 	"frame": {"x":112,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -145,7 +145,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0016",
+	"filename": "Scooshy0016",
 	"frame": {"x":168,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -154,7 +154,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0017",
+	"filename": "Scooshy0017",
 	"frame": {"x":224,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -163,7 +163,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0018",
+	"filename": "Scooshy0018",
 	"frame": {"x":280,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -172,7 +172,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0019",
+	"filename": "Scooshy0019",
 	"frame": {"x":336,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -181,7 +181,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0020",
+	"filename": "Scooshy0020",
 	"frame": {"x":392,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -190,7 +190,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0021",
+	"filename": "Scooshy0021",
 	"frame": {"x":448,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -199,7 +199,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0022",
+	"filename": "Scooshy0022",
 	"frame": {"x":504,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -208,7 +208,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0023",
+	"filename": "Scooshy0023",
 	"frame": {"x":560,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -217,7 +217,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0024",
+	"filename": "Scooshy0024",
 	"frame": {"x":616,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -226,7 +226,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0025",
+	"filename": "Scooshy0025",
 	"frame": {"x":672,"y":54,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -235,7 +235,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0026",
+	"filename": "Scooshy0026",
 	"frame": {"x":0,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -244,7 +244,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0027",
+	"filename": "Scooshy0027",
 	"frame": {"x":56,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -253,7 +253,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0028",
+	"filename": "Scooshy0028",
 	"frame": {"x":112,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -262,7 +262,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0029",
+	"filename": "Scooshy0029",
 	"frame": {"x":168,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -271,7 +271,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0030",
+	"filename": "Scooshy0030",
 	"frame": {"x":224,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -280,7 +280,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0031",
+	"filename": "Scooshy0031",
 	"frame": {"x":280,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -289,7 +289,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0032",
+	"filename": "Scooshy0032",
 	"frame": {"x":336,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -298,7 +298,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0033",
+	"filename": "Scooshy0033",
 	"frame": {"x":392,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -307,7 +307,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0034",
+	"filename": "Scooshy0034",
 	"frame": {"x":448,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -316,7 +316,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0035",
+	"filename": "Scooshy0035",
 	"frame": {"x":504,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -325,7 +325,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0036",
+	"filename": "Scooshy0036",
 	"frame": {"x":560,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -334,7 +334,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0037",
+	"filename": "Scooshy0037",
 	"frame": {"x":616,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -343,7 +343,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0038",
+	"filename": "Scooshy0038",
 	"frame": {"x":672,"y":108,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -352,7 +352,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0039",
+	"filename": "Scooshy0039",
 	"frame": {"x":0,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -361,7 +361,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0040",
+	"filename": "Scooshy0040",
 	"frame": {"x":56,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -370,7 +370,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0041",
+	"filename": "Scooshy0041",
 	"frame": {"x":112,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -379,7 +379,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0042",
+	"filename": "Scooshy0042",
 	"frame": {"x":168,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -388,7 +388,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0043",
+	"filename": "Scooshy0043",
 	"frame": {"x":224,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -397,7 +397,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0044",
+	"filename": "Scooshy0044",
 	"frame": {"x":280,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -406,7 +406,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0045",
+	"filename": "Scooshy0045",
 	"frame": {"x":336,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -415,7 +415,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0046",
+	"filename": "Scooshy0046",
 	"frame": {"x":392,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -424,7 +424,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0047",
+	"filename": "Scooshy0047",
 	"frame": {"x":448,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -433,7 +433,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0048",
+	"filename": "Scooshy0048",
 	"frame": {"x":504,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -442,7 +442,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0049",
+	"filename": "Scooshy0049",
 	"frame": {"x":560,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -451,7 +451,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0050",
+	"filename": "Scooshy0050",
 	"frame": {"x":616,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -460,7 +460,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0051",
+	"filename": "Scooshy0051",
 	"frame": {"x":672,"y":162,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -469,7 +469,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0052",
+	"filename": "Scooshy0052",
 	"frame": {"x":0,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -478,7 +478,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0053",
+	"filename": "Scooshy0053",
 	"frame": {"x":56,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -487,7 +487,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0054",
+	"filename": "Scooshy0054",
 	"frame": {"x":112,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -496,7 +496,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0055",
+	"filename": "Scooshy0055",
 	"frame": {"x":168,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -505,7 +505,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0056",
+	"filename": "Scooshy0056",
 	"frame": {"x":224,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -514,7 +514,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0057",
+	"filename": "Scooshy0057",
 	"frame": {"x":280,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -523,7 +523,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0058",
+	"filename": "Scooshy0058",
 	"frame": {"x":336,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -532,7 +532,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0059",
+	"filename": "Scooshy0059",
 	"frame": {"x":392,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -541,7 +541,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0060",
+	"filename": "Scooshy0060",
 	"frame": {"x":448,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -550,7 +550,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0061",
+	"filename": "Scooshy0061",
 	"frame": {"x":504,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -559,7 +559,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0062",
+	"filename": "Scooshy0062",
 	"frame": {"x":560,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -568,7 +568,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0063",
+	"filename": "Scooshy0063",
 	"frame": {"x":616,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -577,7 +577,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0064",
+	"filename": "Scooshy0064",
 	"frame": {"x":672,"y":216,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -586,7 +586,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0065",
+	"filename": "Scooshy0065",
 	"frame": {"x":0,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -595,7 +595,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0066",
+	"filename": "Scooshy0066",
 	"frame": {"x":56,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -604,7 +604,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0067",
+	"filename": "Scooshy0067",
 	"frame": {"x":112,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -613,7 +613,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0068",
+	"filename": "Scooshy0068",
 	"frame": {"x":168,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -622,7 +622,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0069",
+	"filename": "Scooshy0069",
 	"frame": {"x":224,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -631,7 +631,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0070",
+	"filename": "Scooshy0070",
 	"frame": {"x":280,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -640,7 +640,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0071",
+	"filename": "Scooshy0071",
 	"frame": {"x":336,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -649,7 +649,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0072",
+	"filename": "Scooshy0072",
 	"frame": {"x":392,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -658,7 +658,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0073",
+	"filename": "Scooshy0073",
 	"frame": {"x":448,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -667,7 +667,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0074",
+	"filename": "Scooshy0074",
 	"frame": {"x":504,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -676,7 +676,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0075",
+	"filename": "Scooshy0075",
 	"frame": {"x":560,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -685,7 +685,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0076",
+	"filename": "Scooshy0076",
 	"frame": {"x":616,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -694,7 +694,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0077",
+	"filename": "Scooshy0077",
 	"frame": {"x":672,"y":270,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -703,7 +703,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0078",
+	"filename": "Scooshy0078",
 	"frame": {"x":0,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -712,7 +712,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0079",
+	"filename": "Scooshy0079",
 	"frame": {"x":56,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -721,7 +721,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0080",
+	"filename": "Scooshy0080",
 	"frame": {"x":112,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -730,7 +730,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0081",
+	"filename": "Scooshy0081",
 	"frame": {"x":168,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -739,7 +739,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0082",
+	"filename": "Scooshy0082",
 	"frame": {"x":224,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -748,7 +748,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0083",
+	"filename": "Scooshy0083",
 	"frame": {"x":280,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -757,7 +757,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0084",
+	"filename": "Scooshy0084",
 	"frame": {"x":336,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -766,7 +766,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0085",
+	"filename": "Scooshy0085",
 	"frame": {"x":392,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -775,7 +775,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0086",
+	"filename": "Scooshy0086",
 	"frame": {"x":448,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -784,7 +784,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0087",
+	"filename": "Scooshy0087",
 	"frame": {"x":504,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -793,7 +793,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0088",
+	"filename": "Scooshy0088",
 	"frame": {"x":560,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -802,7 +802,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0089",
+	"filename": "Scooshy0089",
 	"frame": {"x":616,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -811,7 +811,7 @@
 	"regPoint": {"x":24.1,"y":48.65}
 }
 ,{
-	"filename": "Scooby0090",
+	"filename": "Scooshy0090",
 	"frame": {"x":672,"y":324,"w":56,"h":54},
 	"rotated": false,
 	"trimmed": false,
@@ -822,7 +822,7 @@
 "meta": {
 	"app": "Adobe Flash CS6",
 	"version": "12.0.0.481",
-	"image": "scoobyF.png",
+	"image": "scooshy.png",
 	"format": "RGBA8888",
 	"size": {"w":731,"h":384},
 	"scale": "1"
