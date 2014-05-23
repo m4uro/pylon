@@ -21,11 +21,12 @@ Pylon.Character.prototype.init = function () {
 };
 
 Pylon.Character.prototype.update = function () {
-    var aux, offset, currentAngle;
+    var aux, offset, currentAngle, cAnim;
     offset = 0.01;
     currentAngle = game.physics.arcade.angleBetween(this, this.planet) + Math.PI;
     if ((currentAngle > this.targetAngle - offset) && (currentAngle < this.targetAngle + offset)) {
         this.angularSpeed = 0;
+        
         if (this.targetRes) {
             this.play('gather');
             //set timer and extract
@@ -39,18 +40,27 @@ Pylon.Character.prototype.update = function () {
                     if (this.targetRes.qty === 0) {
                         this.play('idle');
                         this.targetRes = null;
+//                        this.targetAngle = null;
                     }
                     this.busy = false;
                 }, this);
             }
         }
         else {
+//            this.targetAngle = null;
             this.play('idle');
         }
     }
-    if (this.animations.currentAnim.name == 'walk') {
-        this.currentAngle += this.angularSpeed;
+    cAnim = this.animations.currentAnim;
+    switch(cAnim.name) {
+            case 'walk': 
+                this.currentAngle += this.angularSpeed;
+                break;
+            case 'select':
+                if (cAnim.isFinished) this.play('idle');
+                break;
     }
+
     aux = this.planet.circle.circumferencePoint(this.currentAngle, true);
     this.x = aux.x;
     this.y = aux.y;
@@ -62,5 +72,7 @@ Pylon.Character.prototype.clicked = function clicked(sprite, pointer) {
     console.log('You clicked ' + sprite.key);
     if (pointer.button === 0) {
         Py.selected = this;
+        this.play('select', null, false);
+        this.targetAngle = null;
     }
 };
