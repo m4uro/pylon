@@ -48,29 +48,30 @@ function create() {
         }
     }
     
-    Py.scooby = new Pylon.Character(game, 100, 380, 'scooby');
-    Py.scooby.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
-    Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
-    Py.scooby.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
-    Py.scooby.animations.add('select', Phaser.Animation.generateFrameNames('Scooby', 91, 99, '', 4), 30, true, false);
-    Py.scooby.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooby', 100, 122, '', 4), 30, true, false);
-    Py.scooby.animations.add('fight', Phaser.Animation.generateFrameNames('Scooby', 123, 152, '', 4), 30, true, false);
-    Py.scooby.init();
+    Py.scooby = new Pylon.Character(game, 100, 380, 'M');
+//    Py.scooby.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
+//    Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
+//    Py.scooby.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
+//    Py.scooby.animations.add('select', Phaser.Animation.generateFrameNames('Scooby', 91, 99, '', 4), 30, true, false);
+//    Py.scooby.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooby', 100, 122, '', 4), 30, true, false);
+//    Py.scooby.animations.add('fight', Phaser.Animation.generateFrameNames('Scooby', 123, 152, '', 4), 30, true, false);
+//    Py.scooby.init();
+//    Py.scooby.gender = 'M';//DELETE
     game.add.existing(Py.scooby);
     
-    Py.scooshy = new Pylon.Character(game, 200, 380, 'scooshy');
-    Py.scooshy.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
-    Py.scooshy.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
-    Py.scooshy.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
-    Py.scooshy.animations.add('select', Phaser.Animation.generateFrameNames('Scooshy', 91, 99, '', 4), 30, true, false);
-    Py.scooshy.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooshy', 100, 117, '', 4), 30, true, false);
-    Py.scooshy.animations.add('fight', Phaser.Animation.generateFrameNames('Scooshy', 118, 147, '', 4), 30, true, false);
-    Py.scooshy.animations.add('birth', Phaser.Animation.generateFrameNames('Scooshy', 148, 183, '', 4), 30, true, false);
-    Py.scooshy.init();
+    Py.scooshy = new Pylon.Character(game, 200, 380, 'F');
+//    Py.scooshy.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('select', Phaser.Animation.generateFrameNames('Scooshy', 91, 99, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooshy', 100, 117, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('fight', Phaser.Animation.generateFrameNames('Scooshy', 118, 147, '', 4), 30, true, false);
+//    Py.scooshy.animations.add('birth', Phaser.Animation.generateFrameNames('Scooshy', 148, 183, '', 4), 30, true, false);
+//    Py.scooshy.init();
+//    Py.scooshy.gender = 'F';//DELETE
     game.add.existing(Py.scooshy);
     
     Py.messageCount = 0;
-//    Py.selected = Py.scooby;
     
     game.input.mouse.mouseDownCallback = mouseClick;
     
@@ -137,11 +138,22 @@ function mouseClick(event) {
             sel.angularSpeed = -Py.attr.angularSpeed;
             if (sel.scale.x > 0) sel.scale.x *= -1;
         }
+        //TODO cancel targetRep actions and timer events
+        if (sel.targetRep) {
+            sel.targetRep.cancelActions();
+            sel.targetRep.play('idle');
+        }
+        sel.cancelActions();
         sel.targetAngle = alpha;
         sel.play('walk');
-        sel.busy = false;
-        sel.targetRes = null;
-        if (sel.timer) game.time.events.remove(sel.timer);
+//        sel.busy = false;
+//        sel.targetRes = null;
+//        
+//        sel.targetRep = null;
+//        if (sel.timer) {
+//            game.time.events.remove(sel.timer);
+//            sel.timer = null;
+//        }
     }
 }
 
