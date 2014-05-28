@@ -23,16 +23,16 @@ function create() {
         extraction: 10
     };
     
-//    Py.red = game.add.sprite(250, 250, 'red');
+    Py.red = game.add.sprite(250, 250, 'red');
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
     
     Py.planets = new Array();
-    createPlanets(7);
-//    Py.planets.push(new Pylon.Planet(250, 250, 200));
-//    Py.planets.push(new Pylon.Planet(600, 200, 120));
-//    Py.planets.push(new Pylon.Planet(1000, 300, 260));
+//    createPlanets(7);
+    Py.planets.push(new Pylon.Planet(250, 250, 200));
+    Py.planets.push(new Pylon.Planet(600, 200, 120));
+    Py.planets.push(new Pylon.Planet(1000, 300, 260));
 
     game.stage.backgroundColor = 0x02B5F0;
     
@@ -50,6 +50,10 @@ function create() {
             }
         }
     }
+    
+    Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M');
+
+    game.add.existing(Py.EvilScooby);
     
     Py.scooby = new Pylon.Character(game, 100, 380, 'M', '2');
 
@@ -79,7 +83,9 @@ function setWorld() {
     });
     
     canvas.addEventListener('mousedown',function(e){
-        mouseDown = true;
+        if (e.which === 1) {
+            mouseDown = true;
+        }
         prevX = e.screenX;
         prevY = e.screenY;
     });
@@ -146,11 +152,10 @@ function createPlanets(number) {
 }
 
 function mouseClick(event) {
-    //TODO: check if character is selected, get character planet
     var p, alpha, beta, right, sel;
     sel = Py.selected;
     if ((event.which === 3)&&(sel)) {
-        p = new Phaser.Point(event.clientX, event.clientY);
+        p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
         alpha = game.physics.arcade.angleBetween(p, sel.planet) + Math.PI; //clicked angle
         beta = game.physics.arcade.angleBetween(sel, sel.planet) + Math.PI; //character angle
         beta = beta % (2*Math.PI);

@@ -1,8 +1,8 @@
-Pylon.Character = function (game, x, y, gender, num) {
+Pylon.Character = function (game, x, y, gender, team) {
     if (!gender) gender = game.rnd.pick(['M','F']);
-    if (!num) num = '';
+    if (!team) team = '';
     if (gender === 'M') {
-        Phaser.Sprite.call(this, game, x, y, 'scooby'+num);
+        Phaser.Sprite.call(this, game, x, y, 'scooby'+team);
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
@@ -12,7 +12,7 @@ Pylon.Character = function (game, x, y, gender, num) {
         this.animations.add('die', Phaser.Animation.generateFrameNames('Scooby', 153, 184, '', 4), 30, true, false);
     }
     else if (gender === 'F') {
-        Phaser.Sprite.call(this, game, x, y, 'scooshy'+num);
+        Phaser.Sprite.call(this, game, x, y, 'scooshy'+team);
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
@@ -24,7 +24,7 @@ Pylon.Character = function (game, x, y, gender, num) {
     }
     else console.log('Error: invalid gender specified in character creation');
     this.anchor.setTo(0.56, 0.82); //(regPoint.x/sourceSize.w, regPoint.y/sourceSize.h)
-    this.num = num;
+    this.team = team;
     this.scale.setTo(0.7, 0.7);
     this.gender = gender;
     this.play('idle');
@@ -37,6 +37,8 @@ Pylon.Character = function (game, x, y, gender, num) {
     this.inputEnabled = true;
     this.input.pixelPerfectClick = true;
     this.events.onInputDown.add(this.clicked, this);
+    this.health = 100;
+    this.alive = true;
     this.offset = 0.01;
 };
 
@@ -46,7 +48,7 @@ Pylon.Character.prototype.constructor = Pylon.Character;
 Pylon.Character.prototype.update = function () {
     var aux, offset, currentAngle, cAnim, male, female, newChar;
     currentAngle = game.physics.arcade.angleBetween(this, this.planet) + Math.PI;
-    if ((currentAngle > this.targetAngle - this.offset) && (currentAngle < this.targetAngle + this.offset)) {
+    if ((this.alive)&&(currentAngle > this.targetAngle - this.offset) && (currentAngle < this.targetAngle + this.offset)) {
         this.angularSpeed = 0;
         
         if (this.targetRes) {
@@ -54,14 +56,13 @@ Pylon.Character.prototype.update = function () {
             //set timer and extract
             if (!this.busy) {
                 this.busy = true;
-                this.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { 
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { //TEMP extraction speed
                     aux = this.targetRes.extract(Py.attr.extraction);
                     Py.message = 'Extracted ' + aux + ' ' + this.targetRes.type + '!';
                     Py.messageCount++;
                     if (this.targetRes.qty === 0) {
                         this.play('idle');
                         this.targetRes = null;
-//                        this.targetAngle = null;
                     }
                     this.busy = false;
                 }, this);
@@ -74,7 +75,7 @@ Pylon.Character.prototype.update = function () {
             this.targetRep.play('fuck');
         
             if (!this.timer) {
-                this.timer = game.time.events.add(Phaser.Timer.SECOND * 2, function () { 
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 2, function () { //TEMP reproduction speed
                     if (this.gender === 'M') {
                         male = this;
                         female = this.targetRep;
@@ -86,6 +87,20 @@ Pylon.Character.prototype.update = function () {
                     male.play('idle');
                     this.targetRep = null;
                     female.play('birth', null, false);
+                }, this);
+            }
+        }
+        else if (this.targetEnemy) {
+            this.play('fight');
+            if (!this.busy) {
+                this.busy = true;
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { //TEMP attack speed
+                    this.targetEnemy.hit(20); //TEMP attack damage
+                    if (!this.targetEnemy.alive) {
+                        this.cancelActions();
+                        this.play('idle');
+                    }
+                    this.busy = false;
                 }, this);
             }
         }
@@ -103,7 +118,7 @@ Pylon.Character.prototype.update = function () {
                 break;
             case 'birth':
                 if (cAnim.isFinished) {
-                    newChar = game.add.existing(new Pylon.Character(game, this.x, this.y, game.rnd.pick(['M','F']),this.num));
+                    newChar = game.add.existing(new Pylon.Character(game, this.x, this.y, game.rnd.pick(['M','F']),this.team));
                     newChar.currentAngle = this.currentAngle;
                     newChar.scale.setTo(0.4, 0.4);
                     if (this.scale.x > 0) {
@@ -127,16 +142,20 @@ Pylon.Character.prototype.update = function () {
 Pylon.Character.prototype.clicked = function (sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
     console.log('You clicked ' + sprite.key);
-    if (pointer.button === 0) {
+    if ((pointer.button === 0) && (this.alive)) {
         Py.selected = this;
         this.play('select', null, false);
         this.targetAngle = null;
     }
-    else if ((pointer.button === 2)&&(this.gender === 'F')&&(Py.selected)&&(Py.selected.gender === 'M')&&(Py.selected.planet === this.planet)) {
-        //right click on a character of different gender in the same planet
-        //TODO only friendly units should be allowed
-        Py.selected.targetRep = this;
-        Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+    else if ((pointer.button === 2)&&(Py.selected)&&(Py.selected.planet === this.planet)) {
+        if ((Py.selected.gender === 'M')&&(this.gender === 'F')&&(this.team === Py.selected.team)) {
+            Py.selected.targetRep = this;
+            Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+        }
+        else if(this.team !== Py.selected.team) {
+            Py.selected.targetEnemy = this;
+            Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+        }
     }
 };
 
@@ -148,6 +167,20 @@ Pylon.Character.prototype.cancelActions = function () {
         game.time.events.remove(this.timer);
         this.timer = null;
     }
+    this.targetEnemy = null;
     this.targetAngle = null;
     this.offset = 0.01;
+};
+
+Pylon.Character.prototype.hit = function (value) {
+    this.health -= value;
+    if (this.health <= 0)
+    {
+        if (Py.selected === this) {
+            Py.selected = null;
+        }
+        this.cancelActions();
+        this.play('die', null, false);
+        this.alive = false;
+    }
 };
