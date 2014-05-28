@@ -16,7 +16,8 @@ function preload() {
 function create() {
     var i, j, point, planet, slots, aux;
 //    Py.BSU = 80; //Basic Slot Unit
-    
+    setWorld();
+
     Py.attr = {
         angularSpeed: 0.7,
         extraction: 10
@@ -77,6 +78,55 @@ function create() {
     
     game.input.mouse.mouseDownCallback = mouseClick;
     
+}
+
+function setWorld() {
+    //  Modify the world and camera bounds
+    game.world.setBounds(0, 0, 4000, 4000);
+    var canvas = window.document.getElementsByTagName('canvas')[0],
+        prevX = 0, prevY = 0, mouseDown = false,
+        lastTimeTracked = 0,
+        backTimeToInertia = 200;
+    
+    canvas.addEventListener('touchstart',function(e){
+        prevX = e.changedTouches[0].screenX;
+        prevY = e.changedTouches[0].screenY;
+    });
+    
+    canvas.addEventListener('mousedown',function(e){
+        mouseDown = true;
+        prevX = e.screenX;
+        prevY = e.screenY;
+    });
+    
+    canvas.addEventListener('touchmove',function(e){
+        e.preventDefault();
+        game.camera.x+= prevX - e.changedTouches[0].screenX;
+        prevX = e.changedTouches[0].screenX;
+        game.camera.y+= prevY - e.changedTouches[0].screenY;
+        prevY = e.changedTouches[0].screenY;
+        lastTimeTracked = Date.now();
+    });
+    
+    canvas.addEventListener('mousemove',function(e){
+        if(mouseDown){
+            e.preventDefault();
+            game.camera.x+= prevX - e.screenX;
+            prevX = e.screenX;
+            game.camera.y+= prevY - e.screenY;
+            prevY = e.screenY;
+            lastTimeTracked = Date.now();
+        }
+    });
+    
+    canvas.addEventListener('mouseup',function(e){
+        mouseDown = false;
+
+    });
+    
+    canvas.addEventListener('mouseleave',function(e){
+        mouseDown = false;
+    });
 }
 
 function update() {
