@@ -2,7 +2,9 @@ var game = new Phaser.Game(1368, 656, Phaser.CANVAS, 'game', { preload: preload,
 
 function preload() {
     game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
+    game.load.atlas('scooby2', 'assets/scooby2.png', 'assets/scooby2.json');
     game.load.atlas('scooshy', 'assets/scooshy.png', 'assets/scooshy.json');
+    game.load.atlas('scooshy2', 'assets/scooshy2.png', 'assets/scooshy2.json');
     game.load.image('red', 'assets/red.png');
     game.load.image('planet1', 'assets/planet1.png');
     game.load.image('mineral', 'assets/mineral.png');
@@ -48,7 +50,7 @@ function create() {
         }
     }
     
-    Py.scooby = new Pylon.Character(game, 100, 380, 'M');
+    Py.scooby = new Pylon.Character(game, 100, 380, 'M', '2');
 //    Py.scooby.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
 //    Py.scooby.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
 //    Py.scooby.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
@@ -59,7 +61,7 @@ function create() {
 //    Py.scooby.gender = 'M';//DELETE
     game.add.existing(Py.scooby);
     
-    Py.scooshy = new Pylon.Character(game, 200, 380, 'F');
+    Py.scooshy = new Pylon.Character(game, 200, 380, 'F', '2');
 //    Py.scooshy.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
 //    Py.scooshy.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
 //    Py.scooshy.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
