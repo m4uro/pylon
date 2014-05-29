@@ -83,13 +83,45 @@ function create() {
     
 }
 
+
+/**
+ * World and camera settings
+ *
+**/
 function setWorld() {
     //  Modify the world and camera bounds
     game.world.setBounds(0, 0, 4000, 4000);
     var canvas = window.document.getElementsByTagName('canvas')[0],
         prevX = 0, prevY = 0, mouseDown = false,
-        lastTimeTracked = 0,
-        backTimeToInertia = 200;
+        counterVel = 0.005,
+        trackedTimes = [],
+        backTimeToInertia = 10;
+    function onMouseTouchUp(e){
+        if(trackedTimes.length > backTimeToInertia){
+            var initTime = trackedTimes[trackedTimes.length - 1],
+                lastTime = trackedTimes[trackedTimes.length - backTimeToInertia],
+                deltaTime = Date.now() - lastTime.time;
+                Vix = (lastTime.x - initTime.x) / (deltaTime),
+                Viy = (lastTime.y - initTime.y) / (deltaTime),
+                t = 25,
+                deltaTimeMin = 100,
+                inertia = null;
+            console.log(Date.now()+ 'out');
+            console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
+            if(deltaTime < deltaTimeMin) {
+                inertia = setInterval(function(){
+                    game.camera.x += (Vix * t) - (counterVel * (Math.log(t)));
+                    game.camera.y += (Viy * t) - (counterVel * (Math.log(t)));
+                    t -= 1;
+                    if(t <= 1) {
+                        clearInterval(inertia);
+                    }
+                }, 10);                
+            }
+        }
+        trackedTimes = [];
+        mouseDown = false;
+    }
     
     canvas.addEventListener('touchstart',function(e){
         prevX = e.changedTouches[0].screenX;
@@ -110,7 +142,11 @@ function setWorld() {
         prevX = e.changedTouches[0].screenX;
         game.camera.y+= prevY - e.changedTouches[0].screenY;
         prevY = e.changedTouches[0].screenY;
-        lastTimeTracked = Date.now();
+        trackedTimes.push({
+            time: Date.now(),
+            x: prevX,
+            y: prevY
+        });
     });
     
     canvas.addEventListener('mousemove',function(e){
@@ -120,18 +156,18 @@ function setWorld() {
             prevX = e.screenX;
             game.camera.y+= prevY - e.screenY;
             prevY = e.screenY;
-            lastTimeTracked = Date.now();
+            trackedTimes.push({
+                time: Date.now(),
+                x: prevX,
+                y: prevY
+            });
+            console.log(Date.now());
         }
     });
     
-    canvas.addEventListener('mouseup',function(e){
-        mouseDown = false;
-
-    });
+    canvas.addEventListener('mouseup', onMouseTouchUp);
     
-    canvas.addEventListener('mouseleave',function(e){
-        mouseDown = false;
-    });
+    canvas.addEventListener('mouseleave',onMouseTouchUp);
 }
 
 function update() {
