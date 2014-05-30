@@ -4,6 +4,7 @@ Pylon.Spaceship = function (game, x, y) {
     this.input.pixelPerfectClick = true;
     this.events.onInputDown.add(this.launch, this);
     this.ignited = false;
+    game.physics.enable(this, Phaser.Physics.ARCADE);
 };
 
 Pylon.Spaceship.prototype = Object.create(Phaser.Sprite.prototype);
