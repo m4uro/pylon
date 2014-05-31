@@ -90,7 +90,7 @@ function setWorld() {
                 Vix = (lastTime.x - initTime.x) / (deltaTime),
                 Viy = (lastTime.y - initTime.y) / (deltaTime),
                 t = 25,
-                deltaTimeMin = 100,
+                deltaTimeMin = 200,
                 inertia = null;
             console.log(Date.now()+ 'out');
             console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
