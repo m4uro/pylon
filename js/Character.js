@@ -28,8 +28,8 @@ Pylon.Character = function (game, x, y, gender, team) {
     this.scale.setTo(0.7, 0.7);
     this.gender = gender;
     this.play('idle');
-    //this.planet = game.rnd.pick(Py.planets);
-    this.planet = Py.planets[2];
+    this.planet = game.rnd.pick(Py.planets);
+//    this.planet = Py.planets[2];
     this.targetResource = null;
     this.busy = false;
     this.angularSpeed = 0;
@@ -58,7 +58,7 @@ Pylon.Character.prototype.update = function () {
                 this.busy = true;
                 this.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { //TEMP extraction speed
                     aux = this.targetRes.extract(Py.attr.extraction);
-                    Py.message = 'Extracted ' + aux + ' ' + this.targetRes.type + '!';
+                    Py.message[0] = 'Extracted ' + aux + ' ' + this.targetRes.type + '!';
                     Py.messageCount++;
                     if (this.targetRes.qty === 0) {
                         this.play('idle');
@@ -142,19 +142,21 @@ Pylon.Character.prototype.update = function () {
 Pylon.Character.prototype.clicked = function (sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
     console.log('You clicked ' + sprite.key);
-    if ((pointer.button === 0) && (this.alive)) {
-        Py.selected = this;
-        this.play('select', null, false);
-        this.targetAngle = null;
-    }
-    else if ((pointer.button === 2)&&(Py.selected)&&(Py.selected.planet === this.planet)) {
-        if ((Py.selected.gender === 'M')&&(this.gender === 'F')&&(this.team === Py.selected.team)) {
-            Py.selected.targetRep = this;
-            Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+    if (this.alive) {
+        if (pointer.button === 0) {
+            Py.selected = this;
+            this.play('select', null, false);
+            this.targetAngle = null;
         }
-        else if(this.team !== Py.selected.team) {
-            Py.selected.targetEnemy = this;
-            Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+        else if ((pointer.button === 2)&&(Py.selected)&&(Py.selected.planet === this.planet)) {
+            if ((Py.selected.gender === 'M')&&(this.gender === 'F')&&(this.team === Py.selected.team)) {
+                Py.selected.targetRep = this;
+                Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+            }
+            else if(this.team !== Py.selected.team) {
+                Py.selected.targetEnemy = this;
+                Py.selected.offset = 0.15; //offset is modified to avoid sprite overlapping
+            }
         }
     }
 };

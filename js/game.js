@@ -17,22 +17,26 @@ function create() {
     var i, j, point, planet, slots, aux;
 //    Py.BSU = 80; //Basic Slot Unit
     setWorld();
+    
+    game.physics.startSystem(Phaser.Physics.ARCADE);
 
+    
+    
     Py.attr = {
         angularSpeed: 0.7,
         extraction: 10
     };
     
-    Py.red = game.add.sprite(250, 250, 'red');
+//    Py.red = game.add.sprite(250, 250, 'red');
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
     
     Py.planets = new Array();
-//    createPlanets(7);
-    Py.planets.push(new Pylon.Planet(250, 250, 200));
-    Py.planets.push(new Pylon.Planet(600, 200, 120));
-    Py.planets.push(new Pylon.Planet(1000, 300, 260));
+    createPlanets(7);
+//    Py.planets.push(new Pylon.Planet(250, 250, 200));
+//    Py.planets.push(new Pylon.Planet(600, 200, 120));
+//    Py.planets.push(new Pylon.Planet(1000, 300, 260));
 
     game.stage.backgroundColor = 0x02B5F0;
     
@@ -48,7 +52,17 @@ function create() {
                 aux.sprite.anchor.setTo(0.5, 0.9);
                 aux.sprite.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
             }
-        }
+            else {
+                point = planet.circle.circumferencePoint(360/slots * i, true);
+                aux = new Pylon.Spaceship(game, point.x, point.y);
+                game.physics.enable(aux, Phaser.Physics.ARCADE);
+                aux.anchor.setTo(0.5, 0.9);
+                aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+                game.add.existing(aux);
+                
+                Py.s = aux;
+            }
+        }   
     }
     
     Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M');
@@ -64,7 +78,7 @@ function create() {
     game.add.existing(Py.scooshy);
     
     Py.messageCount = 0;
-    
+    Py.message = new Array();
     game.input.mouse.mouseDownCallback = mouseClick;
     
 }
@@ -226,6 +240,28 @@ function mouseClick(event) {
         sel.play('walk');
 
     }
+    
+    //TODO delete
+    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
+    var i, Fx, Fy, alpha, aux, r, Fxf, Fyf;
+    Py.message = new Array();
+    Py.message[0] = '';
+    Fxf = 0;
+    Fyf = 0;
+    for (i = 0; i < Py.planets.length; i++) {
+        r = game.physics.arcade.distanceBetween(p, Py.planets[i]);
+        Py.message[0] += '' + r;
+        Py.message[0] += ' ';
+        
+        alpha = game.physics.arcade.angleBetween(p, Py.planets[i]);
+        aux = Py.planets[i].mass/(r * r)
+        Fx = aux * Math.cos(alpha);
+        Fy = aux * Math.sin(alpha);
+        Py.message.push('alpha:'+alpha+', Fx'+i+':'+Fx+', Fy'+i+':'+Fy);
+        Fxf += Fx;
+        Fyf += Fy;
+    }
+    Py.message.push('Fxf:'+Fxf+', Fyf:'+Fyf);
 }
 
 function render() {
@@ -242,6 +278,7 @@ function render() {
 //        }
 //        game.debug.pixel(planet.x, planet.y);
     }
-
-    game.debug.text(Py.messageCount + ': ' +Py.message, 32, 32);
+    for (i = 0; i < Py.message.length; i++) {
+        game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
+    }
 }

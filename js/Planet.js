@@ -8,6 +8,7 @@ Pylon.Planet = function (x, y, radius, bsu) {
     this.x = x;
     this.y = y;
     this.radius = radius;
+    this.mass = 16 * Math.pow(this.radius, 3); //TEMP 16 is a constant that should be determined properly
 };
 
 Pylon.Planet.prototype = {
