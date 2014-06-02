@@ -1,4 +1,5 @@
 var game = new Phaser.Game(1368, 656, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var minimap;
 
 function preload() {
     game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
@@ -17,7 +18,8 @@ function create() {
     var i, j, point, planet, slots, aux;
 //    Py.BSU = 80; //Basic Slot Unit
     setWorld();
-    
+    minimap = new Pylon.MiniMap(game);    
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     
@@ -71,7 +73,7 @@ function create() {
     
     Py.scooby = new Pylon.Character(game, 100, 380, 'M', '2');
 
-    game.add.existing(Py.scooby);
+    game.add.existing(Py.scooby);   
     
     Py.scooshy = new Pylon.Character(game, 200, 380, 'F', '2');
 
@@ -81,7 +83,9 @@ function create() {
     Py.message = new Array();
     game.input.mouse.mouseDownCallback = mouseClick;
     
+    
 }
+
 
 
 /**
@@ -106,8 +110,7 @@ function setWorld() {
                 t = 25,
                 deltaTimeMin = 200,
                 inertia = null;
-            console.log(Date.now()+ 'out');
-            console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
+            
             if(deltaTime < deltaTimeMin) {
                 inertia = setInterval(function(){
                     game.camera.x += (Vix * t) - (counterVel * (Math.log(t)));
@@ -171,7 +174,7 @@ function setWorld() {
 }
 
 function update() {
-
+    //minimap.renderXY(worldGroup, 200, 150, true);
 }
 
 function createPlanets(number) {
@@ -279,6 +282,6 @@ function render() {
 //        game.debug.pixel(planet.x, planet.y);
     }
     for (i = 0; i < Py.message.length; i++) {
-        game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
+        //  game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
     }
 }
