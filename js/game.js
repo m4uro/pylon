@@ -22,8 +22,6 @@ function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    
-    
     Py.attr = {
         angularSpeed: 0.7,
         extraction: 10
@@ -33,18 +31,21 @@ function create() {
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
-    
+    Py.planetGroup = game.add.group();
+    Py.spaceshipGroup = game.add.group();
     Py.planets = new Array();
-    createPlanets(7);
-//    Py.planets.push(new Pylon.Planet(250, 250, 200));
-//    Py.planets.push(new Pylon.Planet(600, 200, 120));
-//    Py.planets.push(new Pylon.Planet(1000, 300, 260));
+//    createPlanets(7);
+    Py.planets.push(new Pylon.Planet(250, 250, 100));
+    Py.planets.push(new Pylon.Planet(600, 200, 60));
+    Py.planets.push(new Pylon.Planet(1000, 300, 130));
 
     game.stage.backgroundColor = 0x02B5F0;
     
     
     for (j = 0; j < Py.planets.length; j++) {
         planet = Py.planets[j];
+        aux = game.add.existing(planet);
+        Py.planetGroup.add(aux);
         slots = Math.floor(planet.circle.circumference() / planet.bsu);
         for (i = 0; i < slots; i++) {
             if (Math.random() <= 0.6) {
@@ -57,12 +58,11 @@ function create() {
             else {
                 point = planet.circle.circumferencePoint(360/slots * i, true);
                 aux = new Pylon.Spaceship(game, point.x, point.y);
-                game.physics.enable(aux, Phaser.Physics.ARCADE);
                 aux.anchor.setTo(0.5, 0.9);
                 aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
                 game.add.existing(aux);
-                
-                Py.s = aux;
+                Py.spaceshipGroup.add(aux);
+                Py.s = aux; //TEMP for debuggin purposes
             }
         }   
     }
@@ -178,11 +178,11 @@ function update() {
 }
 
 function createPlanets(number) {
-    var i, j, point, newRadius, tooClose, D, newX, newY, d;
-    Py.planetCount = number || 3;
+    var count, i, j, point, newRadius, tooClose, D, newX, newY, d;
+    count = number || 3;
     D = 300;
-    for (i = 0; i< Py.planetCount; i++) {
-        newRadius = Math.floor(Math.random() * 200) + 100; //100 < newRadius < 300
+    for (i = 0; i< count; i++) {
+        newRadius = Math.floor(Math.random() * 100) + 50; //100 < newRadius < 300
         do {
             tooClose = false;
             newX = game.world.centerX + Math.random() * D * Math.cos(game.rnd.angle());
@@ -192,7 +192,7 @@ function createPlanets(number) {
             for (j = 0 ; j < i ; j++) {
                 d = game.physics.arcade.distanceBetween(Py.planets[j], point) - Py.planets[j].radius - newRadius;
                 //distancebetween current planet and random position - rcurrent - rgenerated
-                if (d <= D/6) { //TODO the comparison parameter could be refined
+                if (d <= D/2) { //TODO the comparison parameter could be refined
                     tooClose = true;
                     break;
                 }
@@ -200,7 +200,7 @@ function createPlanets(number) {
         }
         while(tooClose);
         Py.planets.push(new Pylon.Planet(newX, newY, newRadius));
-        D = 300 + (200 * i);
+        D = 300 + (100 * i);
     }
 }
 
@@ -244,28 +244,29 @@ function mouseClick(event) {
 
     }
     
-    //TODO delete
-    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
-    var i, Fx, Fy, alpha, aux, r, Fxf, Fyf;
-    Py.message = new Array();
-    Py.message[0] = '';
-    Fxf = 0;
-    Fyf = 0;
-    for (i = 0; i < Py.planets.length; i++) {
-        r = game.physics.arcade.distanceBetween(p, Py.planets[i]);
-        Py.message[0] += '' + r;
-        Py.message[0] += ' ';
-        
-        alpha = game.physics.arcade.angleBetween(p, Py.planets[i]);
-        aux = Py.planets[i].mass/(r * r)
-        Fx = aux * Math.cos(alpha);
-        Fy = aux * Math.sin(alpha);
-        Py.message.push('alpha:'+alpha+', Fx'+i+':'+Fx+', Fy'+i+':'+Fy);
-        Fxf += Fx;
-        Fyf += Fy;
-    }
-    Py.message.push('Fxf:'+Fxf+', Fyf:'+Fyf);
+    //TEMP for debugging:
+//    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
+//    var i, Fx, Fy, alpha, aux, r, Fxf, Fyf;
+//    Py.message = new Array();
+//    Py.message[0] = '';
+//    Fxf = 0;
+//    Fyf = 0;
+//    for (i = 0; i < Py.planets.length; i++) {
+//        r = game.physics.arcade.distanceBetween(p, Py.planets[i]);
+//        Py.message[0] += '' + r;
+//        Py.message[0] += ' ';
+//        
+//        alpha = game.physics.arcade.angleBetween(p, Py.planets[i]);
+//        aux = Py.planets[i].mass/(r * r)
+//        Fx = aux * Math.cos(alpha);
+//        Fy = aux * Math.sin(alpha);
+//        Py.message.push('alpha:'+alpha+', Fx'+i+':'+Fx+', Fy'+i+':'+Fy);
+//        Fxf += Fx;
+//        Fyf += Fy;
+//    }
+//    Py.message.push('Fxf:'+Fxf+', Fyf:'+Fyf);
 }
+
 
 function render() {
 
@@ -284,4 +285,11 @@ function render() {
     for (i = 0; i < Py.message.length; i++) {
         //  game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
     }
+    
+//    Py.planetGroup.forEach(function(item) {
+//        game.debug.body(item);
+//    });
+//    Py.spaceshipGroup.forEach(function(item) {
+//        game.debug.body(item);
+//    });
 }

@@ -4,6 +4,8 @@ Pylon.Spaceship = function (game, x, y) {
     this.input.pixelPerfectClick = true;
     this.events.onInputDown.add(this.launch, this);
     this.ignited = false;
+    game.physics.enable(this, Phaser.Physics.ARCADE);
+    this.body.bounce.setTo(1, 1);
 };
 
 Pylon.Spaceship.prototype = Object.create(Phaser.Sprite.prototype);
@@ -14,6 +16,9 @@ Pylon.Spaceship.prototype.launch = function (sprite, pointer) {
     console.log('You clicked ' + sprite.key);
     this.body.velocity = game.physics.arcade.velocityFromRotation(this.rotation-Math.PI/2, 200);
     this.ignited = true;
+    this.timer = game.time.events.add(350, function () {
+        this.detached = true;
+    }, this);
 };
 
 Pylon.Spaceship.prototype.update = function () {
@@ -28,8 +33,24 @@ Pylon.Spaceship.prototype.update = function () {
             Fx += aux * Math.cos(alpha);
             Fy += aux * Math.sin(alpha);
         }
-        this.body.acceleration.x = Fx/100;
-        this.body.acceleration.y = Fy/100;
+        this.body.acceleration.x = Fx/80;
+        this.body.acceleration.y = Fy/80;
         this.rotation = Math.atan2(this.body.velocity.y, this.body.velocity.x) + Math.PI/2;
     }
+    if (this.detached) {
+        game.physics.arcade.collide(this, Py.planetGroup, collisionHandler, checkIntersect, this);
+    }
 };
+
+function collisionHandler (spaceship, planet) {
+//    spaceship.body.velocity.setTo(0, 0);
+}
+
+function checkIntersect(spaceship, planet) {
+    if (Phaser.Circle.intersectsRectangle(planet.circle, spaceship.body)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
