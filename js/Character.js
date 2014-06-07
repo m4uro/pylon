@@ -1,8 +1,10 @@
 Pylon.Character = function (game, x, y, gender, team) {
     if (!gender) gender = game.rnd.pick(['M','F']);
     if (!team) team = '';
+    this.id = Py.currentCharacterId++;
     if (gender === 'M') {
         Phaser.Sprite.call(this, game, x, y, 'scooby'+team);
+        minimap.addCharacter(this.id, x, y, 'scooby');
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
@@ -10,10 +12,10 @@ Pylon.Character = function (game, x, y, gender, team) {
         this.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooby', 100, 122, '', 4), 30, true, false);
         this.animations.add('fight', Phaser.Animation.generateFrameNames('Scooby', 123, 152, '', 4), 30, true, false);
         this.animations.add('die', Phaser.Animation.generateFrameNames('Scooby', 153, 184, '', 4), 30, true, false);
-        minimap.add(x, y, 'scooby');
     }
     else if (gender === 'F') {
         Phaser.Sprite.call(this, game, x, y, 'scooshy'+team);
+        minimap.addCharacter(this.id, x, y, 'scooshy');
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
@@ -22,7 +24,7 @@ Pylon.Character = function (game, x, y, gender, team) {
         this.animations.add('fight', Phaser.Animation.generateFrameNames('Scooshy', 118, 147, '', 4), 30, true, false);
         this.animations.add('birth', Phaser.Animation.generateFrameNames('Scooshy', 148, 183, '', 4), 30, true, false);
         this.animations.add('die', Phaser.Animation.generateFrameNames('Scooshy', 184, 215, '', 4), 30, true, false);
-        minimap.add(x, y, 'scooshy');
+        
     }
     else console.log('Error: invalid gender specified in character creation');
     this.anchor.setTo(0.56, 0.82); //(regPoint.x/sourceSize.w, regPoint.y/sourceSize.h)
@@ -42,29 +44,7 @@ Pylon.Character = function (game, x, y, gender, team) {
     this.health = 100;
     this.alive = true;
     this.offset = 0.01;
-    
 };
-
-Pylon.MiniMap = function(game) {
-    this.game = game;
-    this.worldGroup = game.add.group();
-    Phaser.Sprite.call(this, game, 0,0);
-    this.worldGroup.fixedToCamera = true;
-    this.worldGroup.scale = new Phaser.Point(0.5, 0.5);
-    this.minimap = game.add.renderTexture(800, 600, 'minimap');
-    this.game.add.sprite(100,100, this.minimap);  
-}
-Pylon.MiniMap.prototype = Object.create(Phaser.Sprite.prototype);
-Pylon.MiniMap.prototype.constructor = Pylon.MiniMap;
-
-Pylon.MiniMap.prototype.update = function () {
-    
-};
-
-Pylon.MiniMap.prototype.add = function(x, y, sprite) {
-    this.worldGroup.add(game.add.sprite(x, y, sprite));
-}
-
 
 Pylon.Character.prototype = Object.create(Phaser.Sprite.prototype);
 Pylon.Character.prototype.constructor = Pylon.Character;
@@ -161,6 +141,7 @@ Pylon.Character.prototype.update = function () {
     this.x = aux.x;
     this.y = aux.y;
     this.rotation = game.physics.arcade.angleBetween(this, this.planet) - Math.PI/2;
+    minimap.updateCharacter(this.id, this.x, this.y, this.rotation);
 };
 
 Pylon.Character.prototype.clicked = function (sprite, pointer) {
