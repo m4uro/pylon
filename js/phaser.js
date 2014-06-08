@@ -27489,6 +27489,8 @@ Phaser.BitmapData = function (game, key, width, height) {
     */
     this._tempB = 0;
 
+    this.input = null;
+
 };
 
 Phaser.BitmapData.prototype = {
@@ -28260,6 +28262,48 @@ Phaser.BitmapData.prototype = {
 };
 
 Phaser.BitmapData.prototype.constructor = Phaser.BitmapData;
+
+/**
+* By default a Text object won't process any input events at all. By setting inputEnabled to true the Phaser.InputHandler is
+* activated for this object and it will then start to process click/touch events and more.
+*
+* @name Phaser.BitmapText#inputEnabled
+* @property {boolean} inputEnabled - Set to true to allow this object to receive input events.
+*/
+Object.defineProperty(Phaser.BitmapData.prototype, "inputEnabled", {
+
+    get: function () {
+
+        return (this.input && this.input.enabled);
+
+    },
+
+    set: function (value) {
+
+        if (value)
+        {
+            if (this.input === null)
+            {
+                this.input = new Phaser.InputHandler(this);
+                this.input.start();
+            }
+            else if (this.input && !this.input.enabled)
+            {
+                this.input.start();
+            }
+        }
+        else
+        {
+            if (this.input && this.input.enabled)
+            {
+                this.input.stop();
+            }
+        }
+
+    }
+
+});
+
 
 /**
 * @author       Richard Davey <rich@photonstorm.com>

@@ -18,14 +18,13 @@ Pylon.Planet = function (x, y, radius, bsu) {
         wood: 0.5
     };
     this.circle = new Phaser.Circle(x, y, radius * 2);
-//    this.x = x;
-//    this.y = y;
     this.radius = radius;
     this.mass = 100 * Math.pow(this.radius, 3); //TEMP 16 is a constant that should be determined properly
     
     this.anchor.setTo(0.5,0.5);
     game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.immovable = true;
+    minimap.create(x, y, bmd);
 };
 
 Pylon.Planet.prototype = Object.create(Phaser.Sprite.prototype);

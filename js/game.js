@@ -1,4 +1,7 @@
-var game = new Phaser.Game(1368, 656, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update, render: render });
+var camera;
+var minimap;
+var worldBounds = { width: 4000, height: 4000};
 
 function preload() {
     game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
@@ -11,13 +14,16 @@ function preload() {
     game.load.image('wood', 'assets/wood.png');
     game.load.image('spaceship', 'assets/spaceship.png');
     game.load.image('building', 'assets/building.png');
+    game.load.image('viewport', 'assets/viewport.png');
+    game.load.image('minimap', 'assets/minimap.png');
 }
 
 function create() {
-    var i, j, point, planet, slots, aux;
+    var i, j, point, planet, slots, aux;    
 //    Py.BSU = 80; //Basic Slot Unit
-    setWorld();
-    
+    camera = new Pylon.Camera(game);
+    minimap = new Pylon.MiniMap(game);    
+
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     Py.attr = {
@@ -71,7 +77,7 @@ function create() {
     
     Py.scooby = new Pylon.Character(game, 100, 380, 'M', '2');
 
-    game.add.existing(Py.scooby);
+    game.add.existing(Py.scooby);   
     
     Py.scooshy = new Pylon.Character(game, 200, 380, 'F', '2');
 
@@ -81,97 +87,14 @@ function create() {
     Py.message = new Array();
     game.input.mouse.mouseDownCallback = mouseClick;
     
+    minimap.updateZ();
 }
 
 
-/**
- * World and camera settings
- *
-**/
-function setWorld() {
-    //  Modify the world and camera bounds
-    game.world.setBounds(0, 0, 4000, 4000);
-    var canvas = window.document.getElementsByTagName('canvas')[0],
-        prevX = 0, prevY = 0, mouseDown = false,
-        counterVel = 0.005,
-        trackedTimes = [],
-        backTimeToInertia = 10;
-    function onMouseTouchUp(e){
-        if(trackedTimes.length > backTimeToInertia){
-            var initTime = trackedTimes[trackedTimes.length - 1],
-                lastTime = trackedTimes[trackedTimes.length - backTimeToInertia],
-                deltaTime = Date.now() - lastTime.time;
-                Vix = (lastTime.x - initTime.x) / (deltaTime),
-                Viy = (lastTime.y - initTime.y) / (deltaTime),
-                t = 25,
-                deltaTimeMin = 100,
-                inertia = null;
-            console.log(Date.now()+ 'out');
-            console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
-            if(deltaTime < deltaTimeMin) {
-                inertia = setInterval(function(){
-                    game.camera.x += (Vix * t) - (counterVel * (Math.log(t)));
-                    game.camera.y += (Viy * t) - (counterVel * (Math.log(t)));
-                    t -= 1;
-                    if(t <= 1) {
-                        clearInterval(inertia);
-                    }
-                }, 10);                
-            }
-        }
-        trackedTimes = [];
-        mouseDown = false;
-    }
-    
-    canvas.addEventListener('touchstart',function(e){
-        prevX = e.changedTouches[0].screenX;
-        prevY = e.changedTouches[0].screenY;
-    });
-    
-    canvas.addEventListener('mousedown',function(e){
-        if (e.which === 1) {
-            mouseDown = true;
-        }
-        prevX = e.screenX;
-        prevY = e.screenY;
-    });
-    
-    canvas.addEventListener('touchmove',function(e){
-        e.preventDefault();
-        game.camera.x+= prevX - e.changedTouches[0].screenX;
-        prevX = e.changedTouches[0].screenX;
-        game.camera.y+= prevY - e.changedTouches[0].screenY;
-        prevY = e.changedTouches[0].screenY;
-        trackedTimes.push({
-            time: Date.now(),
-            x: prevX,
-            y: prevY
-        });
-    });
-    
-    canvas.addEventListener('mousemove',function(e){
-        if(mouseDown){
-            e.preventDefault();
-            game.camera.x+= prevX - e.screenX;
-            prevX = e.screenX;
-            game.camera.y+= prevY - e.screenY;
-            prevY = e.screenY;
-            trackedTimes.push({
-                time: Date.now(),
-                x: prevX,
-                y: prevY
-            });
-            console.log(Date.now());
-        }
-    });
-    
-    canvas.addEventListener('mouseup', onMouseTouchUp);
-    
-    canvas.addEventListener('mouseleave',onMouseTouchUp);
-}
+
 
 function update() {
-
+    //minimap.renderXY(worldGroup, 200, 150, true);
 }
 
 function createPlanets(number) {
@@ -280,7 +203,7 @@ function render() {
 //        game.debug.pixel(planet.x, planet.y);
     }
     for (i = 0; i < Py.message.length; i++) {
-        game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
+        //  game.debug.text(Py.messageCount + ': ' +Py.message[i], 32, 32 * (i+1));
     }
     
 //    Py.planetGroup.forEach(function(item) {
