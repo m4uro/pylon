@@ -18,7 +18,9 @@ function create() {
 //    Py.BSU = 80; //Basic Slot Unit
     setWorld();
     
-    game.physics.startSystem(Phaser.Physics.ARCADE);
+//    game.physics.startSystem(Phaser.Physics.ARCADE);
+    game.physics.startSystem(Phaser.Physics.NINJA);
+    game.physics.ninja.gravity = 0;
 
     Py.attr = {
         angularSpeed: 0.7,
@@ -26,6 +28,7 @@ function create() {
     };
     
 //    Py.red = game.add.sprite(250, 250, 'red');
+//    game.physics.ninja.enableAABB(Py.red);
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
@@ -56,7 +59,8 @@ function create() {
             else {
                 point = planet.circle.circumferencePoint(360/slots * i, true);
                 aux = new Pylon.Spaceship(game, point.x, point.y);
-                aux.anchor.setTo(0.5, 0.9);
+//                aux.anchor.setTo(0.5, 0.9);
+//                aux.anchor.setTo(1, 1);
                 aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
                 game.add.existing(aux);
                 Py.spaceshipGroup.add(aux);
@@ -150,6 +154,10 @@ function setWorld() {
     });
     
     canvas.addEventListener('mousemove',function(e){
+        //TODO delete
+//        Py.red.body.x = event.clientX;
+//        Py.red.body.y = event.clientY;
+//        Py.red.body.setZeroVelocity();       
         if(mouseDown){
             e.preventDefault();
             game.camera.x+= prevX - e.screenX;
@@ -288,5 +296,6 @@ function render() {
 //    });
 //    Py.spaceshipGroup.forEach(function(item) {
 //        game.debug.body(item);
+//        game.debug.pixel(item.x, item.y);
 //    });
 }

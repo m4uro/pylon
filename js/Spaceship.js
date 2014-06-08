@@ -4,8 +4,17 @@ Pylon.Spaceship = function (game, x, y) {
     this.input.pixelPerfectClick = true;
     this.events.onInputDown.add(this.launch, this);
     this.ignited = false;
-    game.physics.enable(this, Phaser.Physics.ARCADE);
-    this.body.bounce.setTo(1, 1);
+//    game.physics.enable(this, Phaser.Physics.ARCADE);
+    this.anchor.setTo(0.5, 0.9);
+    game.physics.ninja.enableAABB(this);
+    this.anchor.setTo(0.5, 0.9);
+//    this.body.shape.pos.x = x;
+//    this.body.shape.pos.y = y;
+//    this.body.setZeroVelocity();
+    
+//    this.x = x - 300;
+//    this.y = y + 200;
+//    this.body.bounce.setTo(1, 1);
 };
 
 Pylon.Spaceship.prototype = Object.create(Phaser.Sprite.prototype);
@@ -14,14 +23,17 @@ Pylon.Spaceship.prototype.constructor = Pylon.Spaceship;
 Pylon.Spaceship.prototype.launch = function (sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
     console.log('You clicked ' + sprite.key);
-    this.body.velocity = game.physics.arcade.velocityFromRotation(this.rotation-Math.PI/2, 200);
-    this.ignited = true;
-    this.timer = game.time.events.add(350, function () {
-        this.detached = true;
-    }, this);
+    this.body.moveTo(200, game.math.radToDeg(this.rotation-Math.PI/2));
+//    this.body.velocity = game.physics.arcade.velocityFromRotation(this.rotation-Math.PI/2, 200);
+//    this.ignited = true;
+//    this.timer = game.time.events.add(350, function () {
+//        this.detached = true;
+//    }, this);
 };
 
 Pylon.Spaceship.prototype.update = function () {
+//    game.physics.ninja.collide(this, Py.red);
+//    this.body.shape.pos.x += 0.001;
     if (this.ignited) {
         var i, Fx, Fy, alpha, aux, r;
         Fx = 0;
