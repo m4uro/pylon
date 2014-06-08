@@ -87,7 +87,7 @@ function create() {
     Py.message = new Array();
     game.input.mouse.mouseDownCallback = mouseClick;
     
-    
+    minimap.updateZ();
 }
 
 

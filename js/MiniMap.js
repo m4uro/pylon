@@ -26,7 +26,6 @@ Pylon.MiniMap = function(game) {
  	viewport = this.create(0,0,'viewport');
  	viewport.width = game.width + minimapOffset;//width of the borders
     viewport.height = game.height + minimapOffset;//width of the borders
- 	viewport.bringToTop();
  	this.viewport = viewport;
 
 }
@@ -35,6 +34,12 @@ Pylon.MiniMap.prototype.constructor = Pylon.MiniMap;
 Pylon.MiniMap.prototype.updateViewport = function(x, y) {
 	this.viewport.x = x;
 	this.viewport.y = y;
+}
+Pylon.MiniMap.prototype.updateZ = function() {
+	this.game.world.remove(this);
+	this.game.world.add(this);
+	this.remove(this.viewport);
+	this.add(this.viewport);
 }
 
 Pylon.MiniMap.prototype.addCharacter = function(id, x, y, sprite) {
