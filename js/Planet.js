@@ -24,7 +24,7 @@ Pylon.Planet = function (x, y, radius, bsu) {
     this.anchor.setTo(0.5,0.5);
     game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.immovable = true;
-    minimap.create(x, y, bmd);
+    Py.minimap.create(x-radius, y-radius, bmd);
 };
 
 Pylon.Planet.prototype = Object.create(Phaser.Sprite.prototype);

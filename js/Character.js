@@ -4,7 +4,7 @@ Pylon.Character = function (game, x, y, gender, team) {
     this.id = Py.currentCharacterId++;
     if (gender === 'M') {
         Phaser.Sprite.call(this, game, x, y, 'scooby'+team);
-        minimap.addCharacter(this.id, x, y, 'scooby');
+        Py.minimap.addCharacter(this.id, x, y, 'scooby');
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooby', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooby', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooby', 61, 90, '', 4), 30, true, false);
@@ -15,7 +15,7 @@ Pylon.Character = function (game, x, y, gender, team) {
     }
     else if (gender === 'F') {
         Phaser.Sprite.call(this, game, x, y, 'scooshy'+team);
-        minimap.addCharacter(this.id, x, y, 'scooshy');
+        Py.minimap.addCharacter(this.id, x, y, 'scooshy');
         this.animations.add('idle', Phaser.Animation.generateFrameNames('Scooshy', 0, 30, '', 4), 30, true, false);
         this.animations.add('walk', Phaser.Animation.generateFrameNames('Scooshy', 31, 60, '', 4), 30, true, false);
         this.animations.add('gather', Phaser.Animation.generateFrameNames('Scooshy', 61, 90, '', 4), 30, true, false);
@@ -79,7 +79,7 @@ Pylon.Character.prototype.update = function () {
             this.targetRep.play('fuck');
         
             if (!this.timer) {
-                this.timer = game.time.events.add(Phaser.Timer.SECOND * 2, function () { //TEMP reproduction speed
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 5, function () { //TEMP reproduction speed
                     if (this.gender === 'M') {
                         male = this;
                         female = this.targetRep;
@@ -141,12 +141,12 @@ Pylon.Character.prototype.update = function () {
     this.x = aux.x;
     this.y = aux.y;
     this.rotation = game.physics.arcade.angleBetween(this, this.planet) - Math.PI/2;
-    minimap.updateCharacter(this.id, this.x, this.y, this.rotation);
+    Py.minimap.updateCharacter(this.id, this.x, this.y, this.rotation);
 };
 
 Pylon.Character.prototype.clicked = function (sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
-    console.log('You clicked ' + sprite.key);
+    console.log('You clicked ' + sprite.key + sprite.team +sprite.gender);
     if (this.alive) {
         if (pointer.button === 0) {
             Py.selected = this;

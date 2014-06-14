@@ -6,7 +6,7 @@ Pylon.Camera = function(game){
 Pylon.Camera.prototype.move = function(deltaX, deltaY) {
     this.game.camera.x += deltaX;
     this.game.camera.y += deltaY;
-    minimap.updateViewport(this.game.camera.x, this.game.camera.y);
+    Py.minimap.updateViewport(this.game.camera.x, this.game.camera.y);
 }
 
 Pylon.Camera.prototype.absoluteMove = function(x, y) {
@@ -19,37 +19,9 @@ Pylon.Camera.prototype.absoluteMove = function(x, y) {
 Pylon.Camera.prototype.constructor = function(){
     var self = this;
     //  Modify the world and camera bounds
-    this.game.world.setBounds(0, 0, worldBounds.width, worldBounds.height);
+    this.game.world.setBounds(0, 0, Py.worldBounds.width, Py.worldBounds.height);
     var canvas = window.document.getElementsByTagName('canvas')[0],
-        prevX = 0, prevY = 0, mouseDown = false,
-        counterVel = 0.005,
-        trackedTimes = [],
-        backTimeToInertia = 10;
-    function onMouseTouchUp(e){
-        if(trackedTimes.length > backTimeToInertia){
-            var initTime = trackedTimes[trackedTimes.length - 1],
-                lastTime = trackedTimes[trackedTimes.length - backTimeToInertia],
-                deltaTime = Date.now() - lastTime.time;
-                Vix = (lastTime.x - initTime.x) / (deltaTime),
-                Viy = (lastTime.y - initTime.y) / (deltaTime),
-                t = 25,
-                deltaTimeMin = 200,
-                inertia = null;
-            
-            if(deltaTime < deltaTimeMin) {
-                inertia = setInterval(function(){
-                    self.move( (Vix * t) - (counterVel * (Math.log(t))), (Viy * t) - (counterVel * (Math.log(t))) );
-                    
-                    t -= 1;
-                    if(t <= 1) {
-                        clearInterval(inertia);
-                    }
-                }, 10);                
-            }
-        }
-        trackedTimes = [];
-        mouseDown = false;
-    }
+        prevX = 0, prevY = 0, mouseDown = false;
     
     canvas.addEventListener('touchstart',function(e){
         prevX = e.changedTouches[0].screenX;
@@ -57,42 +29,51 @@ Pylon.Camera.prototype.constructor = function(){
     });
     
     canvas.addEventListener('mousedown',function(e){
-        if (e.which === 1) {
-            mouseDown = true;
-        }
-        prevX = e.screenX;
-        prevY = e.screenY;
+        mouseDown = true;     
+        prevX = e.clientX;
+        prevY = e.clientY;
     });
     
     canvas.addEventListener('touchmove',function(e){
         e.preventDefault();
-        self.move(prevX - e.changedTouches[0].screenX, prevY - e.changedTouches[0].screenY);
+        if(Py.minimap.mouseDown) {
+            Py.minimap.onOverMinimap({ x: prevX - e.changedTouches[0].screenX, y: prevY - e.changedTouches[0].screenY});
+        }else {
+            self.move(prevX - e.changedTouches[0].screenX, prevY - e.changedTouches[0].screenY);    
+        }        
         prevX = e.changedTouches[0].screenX;
-        prevY = e.changedTouches[0].screenY;        
-        trackedTimes.push({
-            time: Date.now(),
-            x: prevX,
-            y: prevY
-        });
+        prevY = e.changedTouches[0].screenY;
     });
     
     canvas.addEventListener('mousemove',function(e){
         if(mouseDown){
             e.preventDefault();
-            self.move( prevX - e.screenX, prevY - e.screenY);
-            prevX = e.screenX;
-            prevY = e.screenY;
-            
-            trackedTimes.push({
-                time: Date.now(),
-                x: prevX,
-                y: prevY
-            });
+            if(Py.minimap.mouseDown) {
+                Py.minimap.onOverMinimap({ x: e.clientX, y: e.clientY});
+            }else {
+                self.move(prevX - e.clientX, prevY - e.clientY);
+            }            
+            prevX = e.clientX;
+            prevY = e.clientY;
         }
     });
     
-    canvas.addEventListener('mouseup', onMouseTouchUp);
+    canvas.addEventListener('mouseup',function(e){
+        mouseDown = false;
+
+    });
     
-    canvas.addEventListener('mouseleave',onMouseTouchUp);
+    canvas.addEventListener('mouseleave',function(e){
+        mouseDown = false;
+    });
+    
+    window.onresize = this.onWindowResize;
 }
 
+Pylon.Camera.prototype.onWindowResize = function(e) {
+    this.game.width = window.innerWidth;
+    this.game.height = window.innerHeight;
+    this.game.setUpRenderer();
+    Py.minimap.setSizeAndPosition();
+    Py.minimap.updateZ();
+}
