@@ -74,6 +74,7 @@ Pylon.Camera.prototype.onWindowResize = function(e) {
     this.game.width = window.innerWidth;
     this.game.height = window.innerHeight;
     this.game.setUpRenderer();
+    Py.menu.updateAbsolutePos();
     Py.minimap.setSizeAndPosition();
     Py.minimap.updateZ();
 }

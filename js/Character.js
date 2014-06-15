@@ -152,6 +152,7 @@ Pylon.Character.prototype.clicked = function (sprite, pointer) {
             Py.selected = this;
             this.play('select', null, false);
             this.targetAngle = null;
+            Py.menu.show(this);
         }
         else if ((pointer.button === 2)&&(Py.selected)&&(Py.selected.planet === this.planet)) {
             if ((Py.selected.gender === 'M')&&(this.gender === 'F')&&(this.team === Py.selected.team)) {

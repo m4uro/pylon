@@ -2,10 +2,10 @@ var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS,
 
 
 function preload() {
-    game.load.atlas('scooby', 'assets/scooby.png', 'assets/scooby.json');
-    game.load.atlas('scooby2', 'assets/scooby2.png', 'assets/scooby2.json');
-    game.load.atlas('scooshy', 'assets/scooshy.png', 'assets/scooshy.json');
-    game.load.atlas('scooshy2', 'assets/scooshy2.png', 'assets/scooshy2.json');
+    game.load.atlas('scoobyTeam1', 'assets/scoobyTeam1.png', 'assets/scoobyTeam1.json');
+    game.load.atlas('scoobyTeam2', 'assets/scoobyTeam2.png', 'assets/scoobyTeam2.json');
+    game.load.atlas('scooshyTeam1', 'assets/scooshyTeam1.png', 'assets/scooshyTeam1.json');
+    game.load.atlas('scooshyTeam2', 'assets/scooshyTeam2.png', 'assets/scooshyTeam2.json');
     game.load.image('red', 'assets/red.png');
     game.load.image('planet1', 'assets/planet1.png');
     game.load.image('mineral', 'assets/mineral.png');
@@ -14,6 +14,8 @@ function preload() {
     game.load.image('building', 'assets/building.png');
     game.load.image('viewport', 'assets/viewport.png');
     game.load.image('minimap', 'assets/minimap.png');
+
+    game.load.image('constructorIcon', 'assets/mineral.png');//change the sprite
 
     /* see where we'll put the pixi filters */
     game.load.script('abstracFilter', 'src/pixi/filters/AbstractFilter.js');
@@ -25,6 +27,7 @@ function create() {
 //    Py.BSU = 80; //Basic Slot Unit
     Py.camera = new Pylon.Camera(game);
     Py.minimap = new Pylon.MiniMap(game);    
+    Py.menu = new Pylon.Menu(game);
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -49,36 +52,18 @@ function create() {
         planet = Py.planets[j];
         aux = game.add.existing(planet);
         Py.planetGroup.add(aux);
-        slots = Math.floor(planet.circle.circumference() / planet.bsu);
-        for (i = 0; i < slots; i++) {
-            if (Math.random() <= 0.6) {
-                point = planet.circle.circumferencePoint(360/slots * i, true);
-                //TEMP 50 as resource quantity
-                aux = new Pylon.Resource(planet.getResource(Math.random()), 50, point.x, point.y, planet);
-                aux.sprite.anchor.setTo(0.5, 0.9);
-                aux.sprite.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
-            }
-            else {
-                point = planet.circle.circumferencePoint(360/slots * i, true);
-                aux = new Pylon.Spaceship(game, point.x, point.y);
-                aux.anchor.setTo(0.5, 0.9);
-                aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
-                game.add.existing(aux);
-                Py.spaceshipGroup.add(aux);
-                Py.s = aux; //TEMP for debuggin purposes
-            }
-        }   
+        planet.setSlots();
     }
     
-    Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M');
+    Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M', 'Team1');
 
     game.add.existing(Py.EvilScooby);
     
-    Py.scooby = new Pylon.Character(game, 100, 380, 'M', '2');
+    Py.scooby = new Pylon.Character(game, 100, 380, 'M', 'Team2');
 
     game.add.existing(Py.scooby);   
     
-    Py.scooshy = new Pylon.Character(game, 200, 380, 'F', '2');
+    Py.scooshy = new Pylon.Character(game, 200, 380, 'F', 'Team2');
 
     game.add.existing(Py.scooshy);
     
@@ -160,7 +145,7 @@ function mouseClick(event) {
         sel.cancelActions();
         sel.targetAngle = alpha;
         sel.play('walk');
-
+        Py.menu.hide();
     }
     
     //TEMP for debugging:
