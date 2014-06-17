@@ -14,13 +14,20 @@ function preload() {
 }
 
 function create() {
-    var i, j, point, planet, slots, aux;
+    var i, j, point, planet, slots, aux, spaceshipCollisionGroup;
 //    Py.BSU = 80; //Basic Slot Unit
     setWorld();
     
-//    game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.physics.startSystem(Phaser.Physics.NINJA);
-    game.physics.ninja.gravity = 0;
+//    game.physics.startSystem(Phaser.Physics.ARCADE); //arcade
+//    game.physics.startSystem(Phaser.Physics.NINJA);//ninja
+    game.physics.startSystem(Phaser.Physics.P2JS);
+    game.physics.p2.applyDamping = false;
+    game.physics.p2.restitution = 0.1;
+    
+    game.physics.p2.setImpactEvents(true);
+    spaceshipCollisionGroup = game.physics.p2.createCollisionGroup();
+    Py.planetCollisionGroup = game.physics.p2.createCollisionGroup();
+//    game.physics.ninja.gravity = 0;
 
     Py.attr = {
         angularSpeed: 0.7,
@@ -28,17 +35,17 @@ function create() {
     };
     
 //    Py.red = game.add.sprite(250, 250, 'red');
-//    game.physics.ninja.enableAABB(Py.red);
+    
 //    Py.planet1sprite = game.add.sprite(250, 250, 'planet1');
 //    Py.planet1sprite.anchor.setTo(0.5, 0.5);
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
     Py.planetGroup = game.add.group();
     Py.spaceshipGroup = game.add.group();
     Py.planets = new Array();
-//    createPlanets(7);
-    Py.planets.push(new Pylon.Planet(250, 250, 100));
-    Py.planets.push(new Pylon.Planet(600, 200, 60));
-    Py.planets.push(new Pylon.Planet(1000, 300, 130));
+    createPlanets(7);
+//    Py.planets.push(new Pylon.Planet(250, 250, 100));
+//    Py.planets.push(new Pylon.Planet(600, 200, 60));
+//    Py.planets.push(new Pylon.Planet(1000, 300, 130));
 
     game.stage.backgroundColor = 0x02B5F0;
     
@@ -46,6 +53,8 @@ function create() {
     for (j = 0; j < Py.planets.length; j++) {
         planet = Py.planets[j];
         aux = game.add.existing(planet);
+        aux.body.setCollisionGroup(Py.planetCollisionGroup);
+        aux.body.collides(spaceshipCollisionGroup);
         Py.planetGroup.add(aux);
         slots = Math.floor(planet.circle.circumference() / planet.bsu);
         for (i = 0; i < slots; i++) {
@@ -59,15 +68,16 @@ function create() {
             else {
                 point = planet.circle.circumferencePoint(360/slots * i, true);
                 aux = new Pylon.Spaceship(game, point.x, point.y);
-//                aux.anchor.setTo(0.5, 0.9);
-//                aux.anchor.setTo(1, 1);
-                aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+                aux.body.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+                aux.body.setCollisionGroup(spaceshipCollisionGroup);
                 game.add.existing(aux);
                 Py.spaceshipGroup.add(aux);
                 Py.s = aux; //TEMP for debuggin purposes
+                
             }
         }   
     }
+    Py.s.tint = 0x000000; //TEMP for debuggin purposes
     
     Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M');
 
@@ -110,8 +120,8 @@ function setWorld() {
                 t = 25,
                 deltaTimeMin = 100,
                 inertia = null;
-            console.log(Date.now()+ 'out');
-            console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
+//            console.log(Date.now()+ 'out');
+//            console.log(lastTime.time +'-'+ initTime.time + '=' + deltaTime);
             if(deltaTime < deltaTimeMin) {
                 inertia = setInterval(function(){
                     game.camera.x += (Vix * t) - (counterVel * (Math.log(t)));
@@ -169,7 +179,7 @@ function setWorld() {
                 x: prevX,
                 y: prevY
             });
-            console.log(Date.now());
+//            console.log(Date.now());
         }
     });
     

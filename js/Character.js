@@ -1,4 +1,4 @@
-Pylon.Character = function (game, x, y, gender, team) {
+Pylon.Character = function (game, x, y, gender, team, planet) {
     if (!gender) gender = game.rnd.pick(['M','F']);
     if (!team) team = '';
     if (gender === 'M') {
@@ -28,7 +28,7 @@ Pylon.Character = function (game, x, y, gender, team) {
     this.scale.setTo(0.7, 0.7);
     this.gender = gender;
     this.play('idle');
-    this.planet = game.rnd.pick(Py.planets);
+    this.planet = planet || game.rnd.pick(Py.planets);
 //    this.planet = Py.planets[2];
     this.targetResource = null;
     this.busy = false;
@@ -118,7 +118,7 @@ Pylon.Character.prototype.update = function () {
                 break;
             case 'birth':
                 if (cAnim.isFinished) {
-                    newChar = game.add.existing(new Pylon.Character(game, this.x, this.y, game.rnd.pick(['M','F']),this.team));
+                    newChar = game.add.existing(new Pylon.Character(game, this.x, this.y, game.rnd.pick(['M','F']), this.team, this.planet));
                     newChar.currentAngle = this.currentAngle;
                     newChar.scale.setTo(0.4, 0.4);
                     if (this.scale.x > 0) {
