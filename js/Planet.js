@@ -22,10 +22,15 @@ Pylon.Planet = function (x, y, radius, bsu) {
     this.mass = 100 * Math.pow(this.radius, 3); //TEMP 16 is a constant that should be determined properly
     
     this.anchor.setTo(0.5,0.5);
-    game.physics.enable(this, Phaser.Physics.ARCADE);
-    this.body.immovable = true;
+
     Py.minimap.create(x-radius, y-radius, bmd);
     this.slotsToBuild = game.add.group();
+//    game.physics.enable(this, Phaser.Physics.ARCADE);
+//    this.body.immovable = true;
+    game.physics.p2.enable(this, true);
+    this.body.setCircle(this.radius);
+//    this.body.motionState = Phaser.Physics.P2.Body.STATIC;
+    this.body.static = true;
 };
 
 Pylon.Planet.prototype = Object.create(Phaser.Sprite.prototype);
@@ -42,7 +47,7 @@ Pylon.Planet.prototype.getResource = function (rnd) {
 };
 
 Pylon.Planet.prototype.setSlots = function() {
-    var planet = this,
+    var planet = this, point, aux,
         i = 0,
         slots = Math.floor(planet.circle.circumference() / planet.bsu);
     for (i = 0; i < slots; i++) {
@@ -56,8 +61,8 @@ Pylon.Planet.prototype.setSlots = function() {
         else {
             point = planet.circle.circumferencePoint(360/slots * i, true);
             aux = new Pylon.Spaceship(game, point.x, point.y);
-            aux.anchor.setTo(0.5, 0.9);
-            aux.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+            aux.body.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
+            aux.body.setCollisionGroup(Py.spaceshipCollisionGroup);
             game.add.existing(aux);
             Py.spaceshipGroup.add(aux);
             Py.s = aux; //TEMP for debuggin purposes
@@ -67,7 +72,7 @@ Pylon.Planet.prototype.setSlots = function() {
 }
 
 Pylon.Planet.prototype.showSlotsToBuild = function() {
-    var aux,
+    var aux, point,
         i = 0;
     
     for(i = 0; i < this.slots; i++) {
