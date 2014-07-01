@@ -6,7 +6,12 @@ function preload() {
     game.load.atlas('scoobyTeam2', 'assets/scoobyTeam2.png', 'assets/scoobyTeam2.json');
     game.load.atlas('scooshyTeam1', 'assets/scooshyTeam1.png', 'assets/scooshyTeam1.json');
     game.load.atlas('scooshyTeam2', 'assets/scooshyTeam2.png', 'assets/scooshyTeam2.json');
+    
+    game.load.atlas('icons', 'assets/icons.png', 'assets/icons.json');
+    
+    
     game.load.image('red', 'assets/red.png');
+    game.load.image('slot', 'assets/slot.png');
     game.load.image('planet1', 'assets/planet1.png');
     game.load.image('mineral', 'assets/mineral.png');
     game.load.image('wood', 'assets/wood.png');
@@ -16,6 +21,10 @@ function preload() {
     game.load.image('minimap', 'assets/minimap.png');
 
     game.load.image('constructorIcon', 'assets/mineral.png');//TODO change the sprite
+    
+    
+    game.load.bitmapFont('eurostyle', 'assets/eurostyle_0.png', 'assets/eurostyle.xml');
+    game.load.bitmapFont('euroObl', 'assets/euroObl_0.png', 'assets/euroObl.xml');
 
     //TODO see where we'll put the pixi filters
     game.load.script('abstracFilter', 'src/pixi/filters/AbstractFilter.js');
@@ -72,15 +81,15 @@ function create() {
     }
     Py.s.tint = 0x000000; //TEMP for debuggin purposes
     
-    Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M', 'Team1');
+    Py.EvilScooby = new Pylon.Character(game, 100, 380, 'M', 'Team2');
 
     game.add.existing(Py.EvilScooby);
     
-    Py.scooby = new Pylon.Character(game, 100, 380, 'M', 'Team2');
+    Py.scooby = new Pylon.Character(game, 100, 380, 'M', 'Team1');
 
     game.add.existing(Py.scooby);   
     
-    Py.scooshy = new Pylon.Character(game, 200, 380, 'F', 'Team2');
+    Py.scooshy = new Pylon.Character(game, 200, 380, 'F', 'Team1');
 
     game.add.existing(Py.scooshy);
     
@@ -89,6 +98,19 @@ function create() {
     game.input.mouse.mouseDownCallback = mouseClick;
     
     Py.minimap.updateZ();//TODO this should be done when we finish adding new stuff
+    
+    //over, out, down, up
+    button = game.add.button(300, 200, 'icons', null, this, 'settings0001', 'settings0000', 'settings0003', 'settings0001');
+    button.anchor.setTo(0.48, 0);
+    
+    
+//    function (x, y, text, style, group)
+//    function (x, y, font, text, size, group)
+//    var text = game.add.bitmapText(100, 200, 'eurostyle', 'EXTRACTOR', { font: '32px Eurostyle', align: 'center' });
+    var text = game.add.bitmapText(100, 200, 'eurostyle', 'EXTRACTOR', 20);
+    var text2 = game.add.bitmapText(100, 400, 'euroObl', '5000', 20);
+    
+//    game.add.sprite(100, 500, 'red');
 }
 
 
@@ -192,7 +214,7 @@ function render() {
     var i, j, point;
     for (j = 0; j < Py.planets.length; j++) {
         var planet = Py.planets[j];
-        game.debug.geom(planet.circle,'rgba(255,127,39,0.3)');
+//        game.debug.geom(planet.circle,'rgba(255,127,39,0.3)');
         var slots = Math.floor(planet.circle.circumference() / planet.bsu);
 //        for (i = 0; i < slots; i++) {
 //            console.log(i);

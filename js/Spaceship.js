@@ -11,7 +11,7 @@ Pylon.Spaceship = function (game, x, y) {
     this.body.setCircle(10);
     this.body.data.shapeOffsets[0] = p2.vec2.fromValues(0,0.7);
     
-    this.body.debug = true;
+//    this.body.debug = true;
     
     cursors = game.input.keyboard.createCursorKeys();
 };

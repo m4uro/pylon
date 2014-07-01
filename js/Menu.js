@@ -1,8 +1,8 @@
 Pylon.Menu = function(game) {
 	Phaser.Group.call(this, game, game.world);
 	
-	this.height = 50;
-	this.offset = 20;
+	this.height = 80;
+	this.offset = 60;
 
 	this.game = game;
 	this.updateAbsolutePos();
@@ -11,8 +11,12 @@ Pylon.Menu = function(game) {
  	this.x = this.offset;
  	this.y = game.height + this.height;
  	this.currentScope = null; /* this will be the character object */
- 	this.constructorIcon = new Pylon.MenuButtonConstructor(this, this.x, this.y);
- 	this.otherIcon = new Pylon.MenuButtonConstructor(this, this.x + 50, this.y);
+// 	this.constructorIcon = new Pylon.MenuButtonConstructor(this, this.x, this.y);
+// 	this.otherIcon = new Pylon.MenuButtonConstructor(this, this.x + 50, this.y);
+    
+    this.constructorIcon = game.add.button(this.x, this.y, 'icons', this.clickHammer, this, 'hammer0001', 'hammer0000', 'hammer0003', 'hammer0001');
+    this.constructorIcon.anchor.setTo(0.5, 1);
+    this.add(this.constructorIcon);
 }
 Pylon.Menu.prototype = Object.create(Phaser.Group.prototype);
 Pylon.Menu.prototype.constructor = Pylon.Menu;
@@ -25,11 +29,12 @@ Pylon.Menu.prototype.updateAbsolutePos = function() {
 Pylon.Menu.prototype.hide = function() {
     var tween = null,
     	delay = 100; /* delay between showing sprites*/
-
     this.forEach(function(sprite) {
-    	sprite.hideOptions(); 
+//    	sprite.hideOptions();
+        if (Py.selected) Py.selected.planet.hideSlotsToBuild();
     	game.add.tween(sprite)
-    		.to({ x: sprite.x, y: this.originalPos.y + this.offset + this.height }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start();
+    		.to({ y: game.height + this.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
+//    		.to({ x: sprite.x, y: this.originalPos.y + this.offset + this.height }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start(); MAXI
     }, this); 
 
 }
@@ -44,8 +49,16 @@ Pylon.Menu.prototype.show = function(sprite) {
     /* We will show every button :) */
     this.forEach(function(sprite) {
     	game.add.tween(sprite)
-    		.to({ x: sprite.x, y: this.originalPos.y }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start();
+    		.to({ y: game.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
+//    		.to({ x: sprite.x, y: this.originalPos.y }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start(); MAXI
     }, this);
+}
 
-    
+
+Pylon.Menu.prototype.clickHammer = function() {
+    Py.selected.planet.showSlotsToBuild();
+    this.forEach(function(sprite) {
+    	game.add.tween(sprite)
+    		.to({ y: game.height + this.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
+    }, this); 
 }

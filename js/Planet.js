@@ -25,11 +25,9 @@ Pylon.Planet = function (x, y, radius, bsu) {
 
     Py.minimap.create(x-radius, y-radius, bmd);
     this.slotsToBuild = game.add.group();
-//    game.physics.enable(this, Phaser.Physics.ARCADE);
-//    this.body.immovable = true;
-    game.physics.p2.enable(this, true);
+    
+    game.physics.p2.enable(this, false); //To enable debugging, set second parameter to true
     this.body.setCircle(this.radius);
-//    this.body.motionState = Phaser.Physics.P2.Body.STATIC;
     this.body.static = true;
 };
 
@@ -79,15 +77,27 @@ Pylon.Planet.prototype.showSlotsToBuild = function() {
         point = this.circle.circumferencePoint(360/this.slots * i, true);
         //TEMP 50 as resource quantity
         aux = new Pylon.PlanetSlotMenu(point.x, point.y);
-        aux.anchor.setTo(0.5, 0.9);
+//        aux.anchor.setTo(0.5, 0.9);
+        aux.anchor.setTo(0.5, 0.5);
         aux.rotation = game.physics.arcade.angleBetween(aux, this) - Math.PI/2;
+        game.add.tween(aux.scale).to( { x: 0.6, y: 0.6 }, 500, Phaser.Easing.Linear.None, true, 0, 1000, true);
         game.add.existing(aux);
         this.slotsToBuild.add(aux);
     }
 }
 
-Pylon.Planet.prototype.hideSlotsToBuild = function() {
-    var i = 0;
-    this.slotsToBuild.removeAll(true);//calling destroy on every child
+Pylon.Planet.prototype.hideSlotsToBuild = function(allButThis) {
+//    var i = 0;
+//    this.slotsToBuild.forEach(function(slot) {
+//    	if (slot !== allButThis)
+//            this.slotsToBuild.remove(slot);
+//    }, this);
+    if (allButThis) {
+        this.slotsToBuild.bringToTop(allButThis);
+        this.slotsToBuild.removeBetween(0, this.slotsToBuild.length - 2, true); 
+    }
+    else {
+        this.slotsToBuild.removeAll(true);//calling destroy on every child
+    }
 }
 

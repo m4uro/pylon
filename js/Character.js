@@ -12,6 +12,7 @@ Pylon.Character = function (game, x, y, gender, team, planet) {
         this.animations.add('fuck', Phaser.Animation.generateFrameNames('Scooby', 100, 122, '', 4), 30, true, false);
         this.animations.add('fight', Phaser.Animation.generateFrameNames('Scooby', 123, 152, '', 4), 30, true, false);
         this.animations.add('die', Phaser.Animation.generateFrameNames('Scooby', 153, 184, '', 4), 30, true, false);
+        this.animations.add('build', Phaser.Animation.generateFrameNames('Scooby', 185, 203, '', 4), 30, true, false);
     }
     else if (gender === 'F') {
         Phaser.Sprite.call(this, game, x, y, 'scooshy'+team);
@@ -24,10 +25,10 @@ Pylon.Character = function (game, x, y, gender, team, planet) {
         this.animations.add('fight', Phaser.Animation.generateFrameNames('Scooshy', 118, 147, '', 4), 30, true, false);
         this.animations.add('birth', Phaser.Animation.generateFrameNames('Scooshy', 148, 183, '', 4), 30, true, false);
         this.animations.add('die', Phaser.Animation.generateFrameNames('Scooshy', 184, 215, '', 4), 30, true, false);
-        
+        this.animations.add('build', Phaser.Animation.generateFrameNames('Scooshy', 216, 234, '', 4), 30, true, false);
     }
     else console.log('Error: invalid gender specified in character creation');
-    this.anchor.setTo(0.56, 0.82); //(regPoint.x/sourceSize.w, regPoint.y/sourceSize.h)
+    this.anchor.setTo(0.46, 0.82); //(regPoint.x/sourceSize.w, regPoint.y/sourceSize.h)
     this.team = team;
     this.scale.setTo(0.7, 0.7);
     this.gender = gender;

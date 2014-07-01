@@ -9,17 +9,60 @@ var Py = {
 var GameSettings = {
 	Team1: {
 		buildings: [{
-			icon: 'red',
-			toBuild: 'tower'
+			icon: 'tower',
+			toBuild: 'tower',
+            cost: {
+                mineral: 40,
+                wood: 40
+            }
 		},{
-			icon: 'red',
-			toBuild: 'house'
-		}]		
+			icon: 'factory',
+			toBuild: 'factory',
+            cost: {
+                wood: 60
+            }
+		},{
+			icon: 'spaceship',
+			toBuild: 'spaceship',
+            cost: {
+                mineral: 50
+            }
+		},{
+			icon: 'academy',
+			toBuild: 'academy',
+            cost: {
+                mineral: 20,
+                wood: 30
+            }
+		}]				
 	},
 	Team2: {
 		buildings: [{
-			icon: 'red',
-			toBuild: 'tower'
-		}]		
+			icon: 'tower',
+			toBuild: 'tower',
+            cost: {
+                mineral: 40,
+                wood: 40
+            }
+		},{
+			icon: 'factory',
+			toBuild: 'factory',
+            cost: {
+                wood: 60
+            }
+		},{
+			icon: 'spaceship',
+			toBuild: 'spaceship',
+            cost: {
+                mineral: 50
+            }
+		},{
+			icon: 'academy',
+			toBuild: 'academy',
+            cost: {
+                mineral: 20,
+                wood: 30
+            }
+		}]				
 	}
 };
