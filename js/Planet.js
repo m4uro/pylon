@@ -35,7 +35,8 @@ Pylon.Planet.prototype = Object.create(Phaser.Sprite.prototype);
 Pylon.Planet.prototype.constructor = Pylon.Planet;
 
 Pylon.Planet.prototype.getResource = function (rnd) {
-        var number = 0;
+        var res,
+            number = 0;
         for (res in this.resourceMap) {
             if (typeof this.resourceMap[res] !== 'function') {
                 number += this.resourceMap[res];
@@ -77,13 +78,14 @@ Pylon.Planet.prototype.showSlotsToBuild = function() {
         point = this.circle.circumferencePoint(360/this.slots * i, true);
         //TEMP 50 as resource quantity
         aux = new Pylon.PlanetSlotMenu(point.x, point.y);
-//        aux.anchor.setTo(0.5, 0.9);
         aux.anchor.setTo(0.5, 0.5);
         aux.rotation = game.physics.arcade.angleBetween(aux, this) - Math.PI/2;
         game.add.tween(aux.scale).to( { x: 0.6, y: 0.6 }, 500, Phaser.Easing.Linear.None, true, 0, 1000, true);
-        game.add.existing(aux);
+//        game.add.existing(aux);
         this.slotsToBuild.add(aux);
     }
+    game.world.remove(this.slotsToBuild);
+    game.world.add(this.slotsToBuild);
 }
 
 Pylon.Planet.prototype.hideSlotsToBuild = function(allButThis) {

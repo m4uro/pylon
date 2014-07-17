@@ -8,7 +8,12 @@ var Py = {
 };
 var GameSettings = {
 	Team1: {
-		buildings: [{
+		resources: {
+            mineral: 0,
+            wood: 0
+        }
+        ,
+        buildings: [{
 			icon: 'tower',
 			toBuild: 'tower',
             cost: {
@@ -37,6 +42,10 @@ var GameSettings = {
 		}]				
 	},
 	Team2: {
+        resources: {
+            mineral: 0,
+            wood: 0
+        },
 		buildings: [{
 			icon: 'tower',
 			toBuild: 'tower',

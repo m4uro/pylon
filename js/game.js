@@ -37,6 +37,7 @@ function create() {
     Py.camera = new Pylon.Camera(game);
     Py.minimap = new Pylon.MiniMap(game);    
     Py.menu = new Pylon.Menu(game);
+    Py.topI = new Pylon.TopInterface(game);
     
 //    game.physics.startSystem(Phaser.Physics.ARCADE); //arcade
 //    game.physics.startSystem(Phaser.Physics.NINJA);//ninja
@@ -63,10 +64,10 @@ function create() {
     Py.spaceshipGroup = game.add.group();
     Py.planets = new Array();
 
-    createPlanets(7);
-//    Py.planets.push(new Pylon.Planet(250, 250, 100));
-//    Py.planets.push(new Pylon.Planet(600, 200, 60));
-//    Py.planets.push(new Pylon.Planet(1000, 300, 130));
+//    createPlanets(7);
+    Py.planets.push(new Pylon.Planet(250, 250, 100));
+    Py.planets.push(new Pylon.Planet(600, 200, 60));
+    Py.planets.push(new Pylon.Planet(1000, 300, 130));
 
     game.stage.backgroundColor = 0x02B5F0;
     
@@ -99,18 +100,14 @@ function create() {
     
     Py.minimap.updateZ();//TODO this should be done when we finish adding new stuff
     
-    //over, out, down, up
-    button = game.add.button(300, 200, 'icons', null, this, 'settings0001', 'settings0000', 'settings0003', 'settings0001');
-    button.anchor.setTo(0.48, 0);
+    aux = game.input.keyboard.addKey(Phaser.Keyboard.B);
+    aux.onDown.add(Py.menu.clickHammer, this);
     
+    Py.messages = new Pylon.Messages(game);
+    aux = game.input.keyboard.addKey(Phaser.Keyboard.M);
+    aux.onDown.add(Py.messages.newMessage, Py.messages);
     
-//    function (x, y, text, style, group)
-//    function (x, y, font, text, size, group)
-//    var text = game.add.bitmapText(100, 200, 'eurostyle', 'EXTRACTOR', { font: '32px Eurostyle', align: 'center' });
-    var text = game.add.bitmapText(100, 200, 'eurostyle', 'EXTRACTOR', 20);
-    var text2 = game.add.bitmapText(100, 400, 'euroObl', '5000', 20);
-    
-//    game.add.sprite(100, 500, 'red');
+    Py.messages.newMessage("hello");
 }
 
 

@@ -77,4 +77,6 @@ Pylon.Camera.prototype.onWindowResize = function(e) {
     Py.menu.updateAbsolutePos();
     Py.minimap.setSizeAndPosition();
     Py.minimap.updateZ();
+    Py.messages.updatePos();
+    Py.topI.updatePos();
 }

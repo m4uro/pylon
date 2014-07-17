@@ -51,7 +51,7 @@ Pylon.Character.prototype = Object.create(Phaser.Sprite.prototype);
 Pylon.Character.prototype.constructor = Pylon.Character;
 
 Pylon.Character.prototype.update = function () {
-    var aux, offset, currentAngle, cAnim, male, female, newChar;
+    var aux, offset, currentAngle, cAnim, male, female, newChar, res;
     currentAngle = game.physics.arcade.angleBetween(this, this.planet) + Math.PI;
     if ((this.alive)&&(currentAngle > this.targetAngle - this.offset) && (currentAngle < this.targetAngle + this.offset)) {
         this.angularSpeed = 0;
@@ -63,8 +63,12 @@ Pylon.Character.prototype.update = function () {
                 this.busy = true;
                 this.timer = game.time.events.add(Phaser.Timer.SECOND * 1, function () { //TEMP extraction speed
                     aux = this.targetRes.extract(Py.attr.extraction);
+                    Py.messages.newMessage('Extracted ' + aux + ' ' + this.targetRes.type + '!');
                     Py.message[0] = 'Extracted ' + aux + ' ' + this.targetRes.type + '!';
                     Py.messageCount++;
+                    res = this.targetRes.type;
+                    GameSettings.Team1.resources[res] += aux;
+                    Py.topI[res].text = GameSettings.Team1.resources[res];
                     if (this.targetRes.qty === 0) {
                         this.play('idle');
                         this.targetRes = null;

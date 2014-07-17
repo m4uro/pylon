@@ -36,7 +36,7 @@ Pylon.Menu.prototype.hide = function() {
     		.to({ y: game.height + this.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
 //    		.to({ x: sprite.x, y: this.originalPos.y + this.offset + this.height }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start(); MAXI
     }, this); 
-
+    this.hidden = true;
 }
 
 Pylon.Menu.prototype.show = function(sprite) {
@@ -52,13 +52,17 @@ Pylon.Menu.prototype.show = function(sprite) {
     		.to({ y: game.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
 //    		.to({ x: sprite.x, y: this.originalPos.y }, 1000, Phaser.Easing.Bounce.Out, false, delay += delay).start(); MAXI
     }, this);
+    this.hidden = false;
 }
 
 
 Pylon.Menu.prototype.clickHammer = function() {
-    Py.selected.planet.showSlotsToBuild();
-    this.forEach(function(sprite) {
-    	game.add.tween(sprite)
-    		.to({ y: game.height + this.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
-    }, this); 
+    if (Py.selected && !Py.menu.hidden) {
+        Py.selected.planet.showSlotsToBuild();
+        Py.menu.forEach(function(sprite) {
+            game.add.tween(sprite)
+                .to({ y: game.height + Py.menu.height }, 200, Phaser.Easing.Linear.None, false, 0).start();
+        }, this);
+        Py.menu.hidden = true;
+    }
 }
