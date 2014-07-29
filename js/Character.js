@@ -113,6 +113,20 @@ Pylon.Character.prototype.update = function () {
                 }, this);
             }
         }
+        else if (this.targetBuilding) {
+            this.play('build');
+            if (!this.busy) {
+                this.busy = true;
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 0.1, function () { //TEMP building speed parameter
+                    aux = this.targetBuilding.build(20); //TEMP building parameter
+                    if (aux) { //finished building
+                        this.play('idle');
+                        this.targetBuilding = null;
+                    }
+                    this.busy = false;
+                }, this);
+            }
+        }
         else {
             this.play('idle');
         }
@@ -182,6 +196,7 @@ Pylon.Character.prototype.cancelActions = function () {
     }
     this.targetEnemy = null;
     this.targetAngle = null;
+    this.targetBuilding = null;
     this.offset = 0.01;
 };
 
@@ -196,4 +211,42 @@ Pylon.Character.prototype.hit = function (value) {
         this.play('die', null, false);
         this.alive = false;
     }
+};
+
+Pylon.Character.prototype.walkTo = function (point) {
+    var alpha, beta, right, sel;
+    sel = Py.selected;
+    alpha = game.physics.arcade.angleBetween(point, this.planet) + Math.PI; //clicked angle
+    beta = game.physics.arcade.angleBetween(this, this.planet) + Math.PI; //character angle
+    beta = beta % (2*Math.PI);
+
+    if (beta >= Math.PI) {
+        if ((alpha > beta) || (alpha < ((beta + Math.PI) % (2*Math.PI))))
+            right = true;
+        else
+            right = false;
+    }
+    else {
+        if ((alpha > beta) && (alpha < ((beta + Math.PI) % (2*Math.PI))))
+            right = true;
+        else
+            right = false;
+    }
+    if (right) {
+        this.angularSpeed = Py.attr.angularSpeed;
+        if (this.scale.x < 0) this.scale.x *= -1;
+    }
+    else {
+        this.angularSpeed = -Py.attr.angularSpeed;
+        if (this.scale.x > 0) this.scale.x *= -1;
+    }
+
+    if (this.targetRep) {
+        this.targetRep.cancelActions();
+        this.targetRep.play('idle');
+    }
+    this.cancelActions();
+    this.targetAngle = alpha;
+    this.play('walk');
+//    Py.menu.hide();
 };

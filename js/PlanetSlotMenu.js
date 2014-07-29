@@ -64,25 +64,25 @@ Pylon.PlanetSlotMenu.prototype.clicked = function(sprite, pointer) {
 
 
 Pylon.PlanetSlotMenu.prototype.optionClicked = function(button, pointer) {
-    //show info and create button
-    var bmd, b, w, h, info, aux, res,
+    //show this.info and create button
+    var bmd, b, w, h, aux, res,
         of = 5,
         qty = 0;
-        info = game.add.group();
+        this.info = game.add.group();
     
     b = button.building;
     aux = game.add.bitmapText(button.x + 15, button.y + 10, 'eurostyle', b.icon.toUpperCase(), 20);
     w = aux.textWidth + 30;
-    info.add(aux);
+    this.info.add(aux);
     aux.alpha = 0.1;
     game.add.tween(aux).to({alpha: 1}, 300, Phaser.Easing.Linear.None, true, 0, false);
     
     for (res in b.cost) {
         if (b.cost.hasOwnProperty(res)) {
             console.log(res + '   ' + b.cost[res]);
-            info.create(button.x + (w - 60)/2, button.y + 35 + 25 * qty, 'icons', 'mini' + res.charAt(0).toUpperCase() + res.substring(1,res.length) + '0000');
+            this.info.create(button.x + (w - 60)/2, button.y + 35 + 25 * qty, 'icons', 'mini' + res.charAt(0).toUpperCase() + res.substring(1,res.length) + '0000');
             aux = game.add.bitmapText(button.x + (w - 60)/2 + 30, button.y + 37 + 25 * qty, 'euroObl', b.cost[res].toString(), 18);
-            info.add(aux);
+            this.info.add(aux);
             aux.alpha = 0.1;
             game.add.tween(aux).to({alpha: 1}, 300, Phaser.Easing.Linear.None, true, 0, false);
             qty++;
@@ -104,18 +104,32 @@ Pylon.PlanetSlotMenu.prototype.optionClicked = function(button, pointer) {
     aux.alpha = 0.6;
     aux.anchor.setTo(0.5, 1);
     aux.scale.y = 0.1;
-    info.add(aux);
-    info.sendToBack(aux);
+    this.info.add(aux);
+    this.info.sendToBack(aux);
     game.add.tween(aux.scale).to({y: 1}, 300, Phaser.Easing.Linear.None, true, 0, false);
     
     
     //TODO replace null callback with build action procedure
-    aux = game.add.button(button.x + w/2, button.y + h, 'icons', null, this, 'ok0002', 'ok0000','ok0004','ok0002');
-    aux.anchor.setTo(0.48, 0.48);
-    info.add(aux);
+    aux = game.add.button(button.x + w/2, button.y + h, 'icons', function () {
+//        alert('confirmed');
+        this.info.destroy();
+        this.destroy();
+        Py.selected.walkTo(this);
+        Py.selected.targetBuilding = new Pylon.Building(game, this.x, this.y, b);
+        game.add.existing(Py.selected.targetBuilding);
+        
+//        for (res in b.cost) {
+//            GameSettings.Team1.resources[res] -= aux;
+//            Py.topI[res].text = GameSettings.Team1.resources[res];
+//        }
+        
+    }, this, 'ok0002', 'ok0000','ok0004','ok0002');
     
-    info.x -= w/2;
-    info.y -= h;
+    aux.anchor.setTo(0.48, 0.48);
+    this.info.add(aux);
+    
+    this.info.x -= w/2;
+    this.info.y -= h;
     
     this.buildingOptions.removeAll(true);
     if (this.circleSprite) this.circleSprite.destroy();

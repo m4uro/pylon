@@ -8,6 +8,7 @@ function preload() {
     game.load.atlas('scooshyTeam2', 'assets/scooshyTeam2.png', 'assets/scooshyTeam2.json');
     
     game.load.atlas('icons', 'assets/icons.png', 'assets/icons.json');
+    game.load.atlas('buildings', 'assets/buildings.png', 'assets/buildings.json');
     
     
     game.load.image('red', 'assets/red.png');
@@ -143,44 +144,46 @@ function createPlanets(number) {
 }
 
 function mouseClick(event) {
-    var p, alpha, beta, right, sel;
-    sel = Py.selected;
-    if ((event.which === 3)&&(sel)) {
+//    var p, alpha, beta, right, sel;
+    var p;
+//    sel = Py.selected;
+    if ((event.which === 3)&&(Py.selected)) {
         p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
-        alpha = game.physics.arcade.angleBetween(p, sel.planet) + Math.PI; //clicked angle
-        beta = game.physics.arcade.angleBetween(sel, sel.planet) + Math.PI; //character angle
-        beta = beta % (2*Math.PI);
-        
-        if (beta >= Math.PI) {
-            if ((alpha > beta) || (alpha < ((beta + Math.PI) % (2*Math.PI))))
-                right = true;
-            else
-                right = false;
-        }
-        else {
-            if ((alpha > beta) && (alpha < ((beta + Math.PI) % (2*Math.PI))))
-                right = true;
-            else
-                right = false;
-        }
-        if (right) {
-            sel.angularSpeed = Py.attr.angularSpeed;
-            if (sel.scale.x < 0) sel.scale.x *= -1;
-        }
-        else {
-            sel.angularSpeed = -Py.attr.angularSpeed;
-            if (sel.scale.x > 0) sel.scale.x *= -1;
-        }
-
-        if (sel.targetRep) {
-            sel.targetRep.cancelActions();
-            sel.targetRep.play('idle');
-        }
-        sel.cancelActions();
-        sel.targetAngle = alpha;
-        sel.play('walk');
-        Py.menu.hide();
-    }
+        Py.selected.walkTo(p);
+//        alpha = game.physics.arcade.angleBetween(p, sel.planet) + Math.PI; //clicked angle
+//        beta = game.physics.arcade.angleBetween(sel, sel.planet) + Math.PI; //character angle
+//        beta = beta % (2*Math.PI);
+//        
+//        if (beta >= Math.PI) {
+//            if ((alpha > beta) || (alpha < ((beta + Math.PI) % (2*Math.PI))))
+//                right = true;
+//            else
+//                right = false;
+//        }
+//        else {
+//            if ((alpha > beta) && (alpha < ((beta + Math.PI) % (2*Math.PI))))
+//                right = true;
+//            else
+//                right = false;
+//        }
+//        if (right) {
+//            sel.angularSpeed = Py.attr.angularSpeed;
+//            if (sel.scale.x < 0) sel.scale.x *= -1;
+//        }
+//        else {
+//            sel.angularSpeed = -Py.attr.angularSpeed;
+//            if (sel.scale.x > 0) sel.scale.x *= -1;
+//        }
+//
+//        if (sel.targetRep) {
+//            sel.targetRep.cancelActions();
+//            sel.targetRep.play('idle');
+//        }
+//        sel.cancelActions();
+//        sel.targetAngle = alpha;
+//        sel.play('walk');
+//        Py.menu.hide();
+}
     
     //TEMP for debugging:
 //    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);

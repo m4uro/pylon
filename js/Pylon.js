@@ -19,26 +19,30 @@ var GameSettings = {
             cost: {
                 mineral: 40,
                 wood: 40
-            }
+            },
+            hp: 200 //healthPoints
 		},{
 			icon: 'factory',
 			toBuild: 'factory',
             cost: {
                 wood: 60
-            }
+            },
+            hp: 250
 		},{
 			icon: 'spaceship',
 			toBuild: 'spaceship',
             cost: {
                 mineral: 50
-            }
+            },
+            hp: 150
 		},{
 			icon: 'academy',
 			toBuild: 'academy',
             cost: {
                 mineral: 20,
                 wood: 30
-            }
+            },
+            hp: 300
 		}]				
 	},
 	Team2: {
@@ -52,26 +56,30 @@ var GameSettings = {
             cost: {
                 mineral: 40,
                 wood: 40
-            }
+            },
+            hp: 200 //healthPoints
 		},{
 			icon: 'factory',
 			toBuild: 'factory',
             cost: {
                 wood: 60
-            }
+            },
+            hp: 250
 		},{
 			icon: 'spaceship',
 			toBuild: 'spaceship',
             cost: {
                 mineral: 50
-            }
+            },
+            hp: 150
 		},{
 			icon: 'academy',
 			toBuild: 'academy',
             cost: {
                 mineral: 20,
                 wood: 30
-            }
+            },
+            hp: 300
 		}]				
 	}
 };
