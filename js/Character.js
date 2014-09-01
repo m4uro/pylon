@@ -68,7 +68,7 @@ Pylon.Character.prototype.update = function () {
                     Py.messageCount++;
                     res = this.targetRes.type;
                     GameSettings.Team1.resources[res] += aux;
-                    Py.topI[res].text = GameSettings.Team1.resources[res];
+                    Py.topI.updateValue(res);
                     if (this.targetRes.qty === 0) {
                         this.play('idle');
                         this.targetRes = null;
@@ -117,7 +117,7 @@ Pylon.Character.prototype.update = function () {
             this.play('build');
             if (!this.busy) {
                 this.busy = true;
-                this.timer = game.time.events.add(Phaser.Timer.SECOND * 0.1, function () { //TEMP building speed parameter
+                this.timer = game.time.events.add(Phaser.Timer.SECOND * 0.3, function () { //TEMP building speed parameter
                     aux = this.targetBuilding.build(20); //TEMP building parameter
                     if (aux) { //finished building
                         this.play('idle');
@@ -126,6 +126,17 @@ Pylon.Character.prototype.update = function () {
                     this.busy = false;
                 }, this);
             }
+        }
+        else if (this.targetShip) {
+            aux = this.targetShip;
+            if (aux.empty) {
+                aux.empty = false;
+                aux.loadTexture('buildings', 'spaceship0001');
+                aux.passenger = this;
+                this.visible = false;
+            }
+            if (Py.selected === this) Py.selected = null;
+            //TODO should also hide build button
         }
         else {
             this.play('idle');
@@ -197,6 +208,7 @@ Pylon.Character.prototype.cancelActions = function () {
     this.targetEnemy = null;
     this.targetAngle = null;
     this.targetBuilding = null;
+    this.targetShip = null;
     this.offset = 0.01;
 };
 

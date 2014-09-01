@@ -15,7 +15,9 @@ Pylon.TopInterface = function(game) {
         aux.anchor.setTo(0.49, 1);
         this.add(aux);
         
-        this[res] = game.add.bitmapText(63 + 140 * i, 5, 'euroObl', GameSettings.Team1.resources[res].toString(), 20);//TODO replace with current team
+        this[res] = game.add.bitmapText(0, 5, 'euroObl', GameSettings.Team1.resources[res].toString(), 20);//TODO replace with current team
+        this[res].centerPos = 66 + 140 * i;
+        this.updateValue(res);
         this.add(this[res]);
         
         i++;
@@ -26,10 +28,17 @@ Pylon.TopInterface = function(game) {
     this.add(this.settingsB);
     this.W = 140 * i + 70;
     this.cameraOffset.x = game.width - this.W;
-}
+};
+
 Pylon.TopInterface.prototype = Object.create(Phaser.Group.prototype);
 Pylon.TopInterface.prototype.constructor = Pylon.TopInterface;
 
 Pylon.TopInterface.prototype.updatePos = function () {
     this.cameraOffset.x = game.width - this.W;
-}
+};
+
+Pylon.TopInterface.prototype.updateValue = function (res) {
+    this[res].text = GameSettings.Team1.resources[res];
+    this[res].updateText();
+    this[res].x = this[res].centerPos - this[res].textWidth/2;
+};

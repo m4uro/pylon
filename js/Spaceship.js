@@ -1,15 +1,18 @@
 var cursors;
-Pylon.Spaceship = function (game, x, y) {
-    Phaser.Sprite.call(this, game, x, y, 'spaceship');
+Pylon.Spaceship = function (game, x, y, planet) {
+//    Phaser.Sprite.call(this, game, x, y, 'spaceship');
+    Phaser.Sprite.call(this, game, x, y, 'buildings', 'spaceship0000');
     this.inputEnabled = true;
     this.input.pixelPerfectClick = true;
-    this.events.onInputDown.add(this.launch, this);
+    this.events.onInputDown.add(this.clicked, this);
     this.ignited = false;
     game.physics.p2.enable(this);
     this.anchor.setTo(0.5, 0.9);
     this.body.collideWorldBounds = false;
     this.body.setCircle(10);
     this.body.data.shapeOffsets[0] = p2.vec2.fromValues(0,0.7);
+    this.planet = planet;
+    this.empty = true;
     
 //    this.body.debug = true;
     
@@ -19,17 +22,26 @@ Pylon.Spaceship = function (game, x, y) {
 Pylon.Spaceship.prototype = Object.create(Phaser.Sprite.prototype);
 Pylon.Spaceship.prototype.constructor = Pylon.Spaceship;
 
-Pylon.Spaceship.prototype.launch = function (sprite, pointer) {
+Pylon.Spaceship.prototype.clicked = function (sprite, pointer) {
     //pointer: left, middle, right / 0, 1, 2
     console.log('You clicked ' + sprite.key);
-//    this.body.moveTo(200, game.math.radToDeg(this.rotation-Math.PI/2));//ninja
-//    this.body.velocity = game.physics.arcade.velocityFromRotation(this.rotation-Math.PI/2, 200);//arcade
-    this.body.moveForward(200);
-    this.ignited = true;
-    this.timer = game.time.events.add(350, function () {
-        this.flying = true;
-        this.body.collides(Py.planetCollisionGroup, collisionHandler, this);
-    }, this);
+    if ((pointer.button === 2) && (Py.selected)) {
+        //if character planet is the same as the sprite planet
+        if (Py.selected.planet === sprite.planet) {
+            //set character to extract this
+            Py.selected.targetShip = sprite;
+        }
+    }
+    else {
+//        this.body.moveTo(200, game.math.radToDeg(this.rotation-Math.PI/2));//ninja
+//        this.body.velocity = game.physics.arcade.velocityFromRotation(this.rotation-Math.PI/2, 200);//arcade
+        this.body.moveForward(200);
+        this.ignited = true;
+        this.timer = game.time.events.add(350, function () {
+            this.flying = true;
+            this.body.collides(Py.planetCollisionGroup, collisionHandler, this);
+        }, this);
+    }
 };
 
 Pylon.Spaceship.prototype.update = function () {
@@ -80,7 +92,7 @@ Pylon.Spaceship.prototype.update = function () {
     }
 };
 
-function collisionHandler (spaceship, planet) {
+function collisionHandler (spaceship, planetBody) {
 //    if (game.physics.arcade.distanceBetween(spaceship, planet) < planet.sprite.radius) {
 //        this.ignited = false;
 //        this.flying = false;
@@ -93,6 +105,18 @@ function collisionHandler (spaceship, planet) {
     console.log('hit');
 //    this.ignited = false;
     this.flying = false;
+    
+    if (this.passenger) {
+        this.passenger.visible = true;
+        this.passenger.planet = planetBody.sprite;
+        this.passenger.currentAngle = Phaser.Math.radToDeg(game.physics.arcade.angleBetween(spaceship, planetBody) + Math.PI);//Math.floor(Math.random()*360);
+        Py.messages.newMessage('' + Phaser.Math.radToDeg(game.physics.arcade.angleBetween(spaceship, planetBody) + Math.PI));
+        this.passenger.cancelActions();
+        this.passenger.play('idle');
+        this.loadTexture('buildings', 'spaceship0000');
+        this.empty = true;
+        this.passenger = null;
+    }
 //    this.body.setZeroVelocity();
 //    this.body.setZeroForce();
 //    this.body.setZeroRotation();

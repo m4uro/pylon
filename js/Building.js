@@ -1,7 +1,7 @@
 Pylon.Building = function (game, x, y, buildingInfo) {
     Phaser.Sprite.call(this, game, x, y, 'buildings', buildingInfo.icon + '0000');
-    this.inputEnabled = true;
-    this.input.pixelPerfectClick = true;
+//    this.inputEnabled = true;
+//    this.input.pixelPerfectClick = true;
 //    this.events.onInputDown.add(this.launch, this);
     this.complete = false;
     this.anchor.setTo(0.5, 0.9);

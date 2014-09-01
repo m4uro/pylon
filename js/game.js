@@ -63,6 +63,7 @@ function create() {
 //    Py.planet1sprite.scale.setTo(1.5,1.4);
     Py.planetGroup = game.add.group();
     Py.spaceshipGroup = game.add.group();
+    Py.buildingGroup = game.add.group();
     Py.planets = new Array();
 
 //    createPlanets(7);
@@ -108,7 +109,29 @@ function create() {
     aux = game.input.keyboard.addKey(Phaser.Keyboard.M);
     aux.onDown.add(Py.messages.newMessage, Py.messages);
     
-    Py.messages.newMessage("hello");
+    Py.messages.newMessage('hello');
+    
+// TODO Delete - Trying to find an easy way to click the background with priority
+//    aux = game.add.sprite( 100, 100, 'icons', 'ok0000');
+//    aux.inputEnabled = true;
+//    aux.input.enableDrag();
+//    aux.input.priorityID = 2;
+////    aux.input.pixelPerfectClick = true;
+//    aux.events.onInputDown.add(function () {
+//        Py.messages.newMessage('ok');
+//    }, this);
+//    
+//    aux = game.add.sprite( 100, 120, 'icons', 'tower0000');
+//    aux.inputEnabled = true;
+//    aux.input.enableDrag();
+//    aux.input.priorityID = 1;
+////    aux.input.pixelPerfectClick = true;
+//    aux.events.onInputDown.add(function () {
+//        Py.messages.newMessage('tower');
+//    }, this);
+    
+    
+    
 }
 
 
@@ -144,47 +167,14 @@ function createPlanets(number) {
 }
 
 function mouseClick(event) {
-//    var p, alpha, beta, right, sel;
     var p;
-//    sel = Py.selected;
+//    Py.messages.newMessage('general');
     if ((event.which === 3)&&(Py.selected)) {
         p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
         Py.selected.walkTo(p);
-//        alpha = game.physics.arcade.angleBetween(p, sel.planet) + Math.PI; //clicked angle
-//        beta = game.physics.arcade.angleBetween(sel, sel.planet) + Math.PI; //character angle
-//        beta = beta % (2*Math.PI);
-//        
-//        if (beta >= Math.PI) {
-//            if ((alpha > beta) || (alpha < ((beta + Math.PI) % (2*Math.PI))))
-//                right = true;
-//            else
-//                right = false;
-//        }
-//        else {
-//            if ((alpha > beta) && (alpha < ((beta + Math.PI) % (2*Math.PI))))
-//                right = true;
-//            else
-//                right = false;
-//        }
-//        if (right) {
-//            sel.angularSpeed = Py.attr.angularSpeed;
-//            if (sel.scale.x < 0) sel.scale.x *= -1;
-//        }
-//        else {
-//            sel.angularSpeed = -Py.attr.angularSpeed;
-//            if (sel.scale.x > 0) sel.scale.x *= -1;
-//        }
-//
-//        if (sel.targetRep) {
-//            sel.targetRep.cancelActions();
-//            sel.targetRep.play('idle');
-//        }
-//        sel.cancelActions();
-//        sel.targetAngle = alpha;
-//        sel.play('walk');
-//        Py.menu.hide();
-}
-    
+    }
+    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
+    Py.messages.newMessage('' + Phaser.Math.radToDeg(game.physics.arcade.angleBetween(p, Py.planets[0]) + Math.PI));
     //TEMP for debugging:
 //    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
 //    var i, Fx, Fy, alpha, aux, r, Fxf, Fyf;

@@ -16,6 +16,7 @@ Pylon.PlanetSlotMenu.prototype.destroy = function() {
 	//destroy menu
 	this.buildingOptions.removeAll(true);
     if (this.circleSprite) this.circleSprite.destroy();
+    if (this.info) this.info.destroy();
 	this.kill();
 }
 
@@ -28,7 +29,7 @@ Pylon.PlanetSlotMenu.prototype.clicked = function(sprite, pointer) {
 		buildings = GameSettings[Py.selected.team].buildings,
 		radius = 50;
 
-	
+	Py.messages.newMessage('slot');
 	
     this.circle = new Phaser.Circle(this.x, this.y, radius * 2);
     
@@ -111,18 +112,28 @@ Pylon.PlanetSlotMenu.prototype.optionClicked = function(button, pointer) {
     
     //TODO replace null callback with build action procedure
     aux = game.add.button(button.x + w/2, button.y + h, 'icons', function () {
-//        alert('confirmed');
+        var enoughResource = true;
         this.info.destroy();
         this.destroy();
-        Py.selected.walkTo(this);
-        Py.selected.targetBuilding = new Pylon.Building(game, this.x, this.y, b);
-        game.add.existing(Py.selected.targetBuilding);
-        
-//        for (res in b.cost) {
-//            GameSettings.Team1.resources[res] -= aux;
-//            Py.topI[res].text = GameSettings.Team1.resources[res];
-//        }
-        
+        for (res in b.cost) {
+            if (GameSettings.Team1.resources[res] < b.cost[res]) {
+                enoughResource = false;
+            }
+            Py.topI[res].text = GameSettings.Team1.resources[res];
+        }
+        if (enoughResource) {
+            for (res in b.cost) {
+                GameSettings.Team1.resources[res] -= b.cost[res]
+                Py.topI.updateValue(res);
+            }
+            Py.selected.walkTo(this);
+            Py.selected.targetBuilding = new Pylon.Building(game, this.x, this.y, b);
+            Py.selected.offset = 0.2;
+            Py.buildingGroup.add(game.add.existing(Py.selected.targetBuilding));
+        }
+        else {
+            Py.messages.newMessage('Not enough resource');
+        }
     }, this, 'ok0002', 'ok0000','ok0004','ok0002');
     
     aux.anchor.setTo(0.48, 0.48);

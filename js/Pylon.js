@@ -9,8 +9,8 @@ var Py = {
 var GameSettings = {
 	Team1: {
 		resources: {
-            mineral: 0,
-            wood: 0
+            mineral: 200,
+            wood: 200
         }
         ,
         buildings: [{

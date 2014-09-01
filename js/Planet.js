@@ -59,16 +59,16 @@ Pylon.Planet.prototype.setSlots = function() {
         }
         else {
             point = planet.circle.circumferencePoint(360/slots * i, true);
-            aux = new Pylon.Spaceship(game, point.x, point.y);
+            aux = new Pylon.Spaceship(game, point.x, point.y, planet);
             aux.body.rotation = game.physics.arcade.angleBetween(aux, planet) - Math.PI/2;
             aux.body.setCollisionGroup(Py.spaceshipCollisionGroup);
             game.add.existing(aux);
             Py.spaceshipGroup.add(aux);
-            Py.s = aux; //TEMP for debuggin purposes
+            Py.s = aux; //TEMP for debugging purposes
         }
     }   
     this.slots = slots;
-}
+};
 
 Pylon.Planet.prototype.showSlotsToBuild = function() {
     var aux, point,
@@ -86,7 +86,7 @@ Pylon.Planet.prototype.showSlotsToBuild = function() {
     }
     game.world.remove(this.slotsToBuild);
     game.world.add(this.slotsToBuild);
-}
+};
 
 Pylon.Planet.prototype.hideSlotsToBuild = function(allButThis) {
 //    var i = 0;
@@ -101,5 +101,5 @@ Pylon.Planet.prototype.hideSlotsToBuild = function(allButThis) {
     else {
         this.slotsToBuild.removeAll(true);//calling destroy on every child
     }
-}
+};
 
