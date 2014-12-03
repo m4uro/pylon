@@ -66,10 +66,10 @@ function create() {
     Py.buildingGroup = game.add.group();
     Py.planets = new Array();
 
-//    createPlanets(7);
-    Py.planets.push(new Pylon.Planet(250, 250, 100));
-    Py.planets.push(new Pylon.Planet(600, 200, 60));
-    Py.planets.push(new Pylon.Planet(1000, 300, 130));
+    createPlanets(7);
+//    Py.planets.push(new Pylon.Planet(250, 250, 100));
+//    Py.planets.push(new Pylon.Planet(600, 200, 60));
+//    Py.planets.push(new Pylon.Planet(1000, 300, 130));
 
     game.stage.backgroundColor = 0x02B5F0;
     
@@ -174,7 +174,7 @@ function mouseClick(event) {
         Py.selected.walkTo(p);
     }
     p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
-    Py.messages.newMessage('' + Phaser.Math.radToDeg(game.physics.arcade.angleBetween(p, Py.planets[0]) + Math.PI));
+//    Py.messages.newMessage('' + Phaser.Math.radToDeg(game.physics.arcade.angleBetween(p, Py.planets[0]) + Math.PI));
     //TEMP for debugging:
 //    p = new Phaser.Point(event.clientX + game.camera.x, event.clientY + game.camera.y);
 //    var i, Fx, Fy, alpha, aux, r, Fxf, Fyf;
