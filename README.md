@@ -1,14 +1,16 @@
-#Pylon
-=====
-##Version 0.9
+# Pylon
 
-##Multiplayer strategy game - codename Pylon
+![alt text](https://raw.githubusercontent.com/m4uro/pylon/master/img/scs1.png "Screenshot 1")
 
-###Features
+#### Version 0.9
 
-- Planet generation and resource generation algorithms.
+#####Multiplayer strategy game - codename Pylon
 
-- Unit capabilities and interactions:
+#####Features
+
+Planet generation and resource generation algorithms.
+
+Unit capabilities and interactions:
 
 * Move over the surface of a planet
 * Gather a resource
@@ -16,20 +18,22 @@
 * Fight with an opposing character
 * Reproduce with a character of the opposite gender
 
-- Basic artificial intelligence:
+Basic artificial intelligence:
 
 * Able to gather resource, build, explore, reproduce and fight
 
-- Two types of resource: 1 manually extracted, 1 building-type extraction
+Two types of resource: 1 manually extracted, 1 building-type extraction
 
-- Define three planet types
+Define three planet types
 
-- Interplanet transport: capsule and apollo
+Interplanet transport: capsule and apollo
 
-- Interface: 
+Interface: 
 
 * Visualize available resource, unit name/type, build option, technology tree
 
-- Upkeep method to limit population: housing/tech upgrade
+Upkeep method to limit population: housing/tech upgrade
 
-- Basic support of the player archetypes: builder, explorer, warrior
+Basic support of the player archetypes: builder, explorer, warrior
+
+![alt text](https://raw.githubusercontent.com/m4uro/pylon/master/img/scs2.png "Screenshot 2")
